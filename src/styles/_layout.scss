@@ -1,0 +1,93 @@
+header.main {
+    // &::before {
+    //     content: "";
+    //     display: block;
+    //     height: 25px;
+    //     background-color: hsl(29, 22%, 28%);
+    //     border-bottom: solid 1px #fff;
+    //     position: absolute;
+    //     top:0;
+    //     left: 0;
+    //     width: 100%;
+    // }
+
+    background-color: hsl(42, 100%, 50%);
+    background-image: url('/the-history-of-seo-1x5.png');
+    background-repeat: repeat-x;
+    background-position: top center;
+    // background-position: 50px center;
+    // padding-top: 26px;
+    // background: rgb(252,76,11);
+    // background: linear-gradient(180deg, rgba(252,76,11,1) 0%, rgba(255,132,0,1) 5%, rgba(255,178,0,1) 100%);
+
+    min-height: 120px;
+
+    .container {
+        display: flex;
+        position: relative;
+        min-height: 120px;
+        &::after {
+            content: "";
+            background-image: url('/history-timeline.jpg');
+            position: absolute;
+            top:26px;
+            //left: 50%;
+            left:0;
+            //transform: translateX(-50%);
+            width: 900px;
+            height: 94px;
+            z-index: 1;
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .container {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .logo {
+        position: absolute;
+        top: 40px;
+        // left: 0;
+        left: 70px;
+        z-index: 2;
+    }
+}
+
+main.main {
+    background-color: #fff;
+    border-top: solid 1px #fff;
+    box-shadow: inset 0 30px 30px -30px rgba(0,0,0,0.25);
+    padding: 1rem 0 2rem;
+}
+
+footer.main {
+    background-color: hsl(42, 100%, 50%);
+    color: #000;
+    padding: 2rem 0;
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.pull-left {
+    float: left;
+    
+    img:is(&) {
+        margin: 0 0.875rem 0 0;
+    }
+}

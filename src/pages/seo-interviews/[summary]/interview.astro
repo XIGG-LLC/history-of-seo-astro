@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
+
+export async function getStaticPaths() {
+    let data = Astro.fetchContent('../../../data/interviews/*.md');
+    
+    return data.filter(d => d.sortorder !== 0).map(item => {
+        return {
+            params: { summary: item.slug },
+            props: { item }
+        }
+    });
+}
+
+const { item } = Astro.props;
+const title = item.SummaryPageTitle;
+const propsObj = {
+	title: `Interview with ${item.title}`,
+    metaDescription: item.metaDescription ?? '',
+    metaKeywords: item.metaKeywords ?? '',
+    breadBrumbPaths: [
+        {name: 'The Interviews', path: 'seo-interviews/'},
+        {name: item.title, path: `${item.slug}/`},
+        {name: 'Interview', path: 'interview/'}
+    ]
+}
+
+---
+<style>
+.back {
+    padding-top: 2rem;
+}
+.thumbnail {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+</style>
+<BaseLayout setup={propsObj} title={title}>
+    <article>
+    
+        <header>
+            <h1>Interview with {item.title}</h1>
+        </header>
+        
+        <div>
+            {item.thumbnail && item.thumbnail !== '' && (
+                <InterviewThumbnail src={item.thumbnail} />
+            )}
+            <div set:html={item.content.html}></div>
+        </div>
+
+    </article>
+</BaseLayout>

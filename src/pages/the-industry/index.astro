@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const propsObj = {
+	title: 'The History of Search Engine Optimization &#8211; Articles on the Industry of SEO',
+    metaDescription: 'Articles on the SEO industry including the birth and basics of search engines and differences between SEO, SEM, and Internet marketing.',
+    metaKeywords: 'History of Search Engine Optimization, History of the Internet,  Development of Search Engines, History of SEO, First Search Engine, Search Engine Optimization, History of Search, SEM and Internet Marketing, World Wide Web, Search Engine Marketing, Search Engines, Search Engine, Internet Marketing, Engine Optimization, SEO Pioneers, Internet, SEM, SEO, Article',
+    breadBrumbPaths: [{name: 'The Industry', path: 'the-industry/'}]
+}
+
+let data = Astro.fetchContent('../../data/industry-articles/*.md');
+
+// Sort by 'sortorder' field
+if (data.length) {
+    data = data.sort((a, b) => {
+        return (a.sortorder < b.sortorder) ? -1 : 1;
+    }).filter(d => d.sortorder !== 0);
+}
+
+---
+
+<BaseLayout setup={propsObj}>
+    {data && data.map(item => (
+        <article>
+            <h2><a href={`/the-industry/${item.slug}/`}>{item.title}</a></h2>
+            <div set:html={item.description}></div>
+        </article>
+    ))}
+</BaseLayout>
+	

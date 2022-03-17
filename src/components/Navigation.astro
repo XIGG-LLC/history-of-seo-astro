@@ -1,0 +1,53 @@
+---
+
+const menuItems = [
+    {"name": "Home", "url": "/"},
+    {"name": "The Interviews", "url": "/seo-interviews"},
+    {"name": "The Industry", "url": "/the-industry"},
+    {"name": "About", "url": "/about"}
+];
+
+function isCurrentParent(url) {
+    const path = Astro.request.url.pathname;
+    if (url === '/' && path === '/') {
+        return true;
+    }
+    else if (url !== '/' && path.indexOf(url) > -1) {
+        return true;
+    }
+    return false;
+}
+---
+
+<style lang="scss">
+    nav {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 1rem;
+        z-index: 2;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            gap: 1.5rem;
+            display: flex;
+        }
+
+        a {
+            color: #333;
+            font-size: 1.25rem;
+            text-decoration: none;
+            &.current {
+                font-weight: bold;
+            }
+        }
+    }
+</style>
+
+<nav>
+    <ul>
+    {menuItems && menuItems.map(menu => (
+        <li><a class={isCurrentParent(menu.url) ? 'current' : ''} href={`${menu.url}${(menu.url !== '/' ? '/' : '')}`}>{menu.name}</a></li>
+    ))}
+    </ul>
+</nav>

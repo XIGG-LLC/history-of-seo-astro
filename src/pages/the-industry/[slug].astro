@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+    let data = Astro.fetchContent('../../data/industry-articles/*.md');
+    
+    return data.filter(d => d.sortorder !== 0).map(item => {
+        return {
+            params: {slug: item.slug },
+            props: { item }
+        }
+    });
+}
+
+const { item } = Astro.props;
+const title = item.title;
+const propsObj = {
+	title: item.title,
+    metaDescription: item.metaDescription ?? '',
+    metaKeywords: item.metaKeywords ?? '',
+    breadBrumbPaths: [
+        {name: 'The Industry', path: 'the-industry/'},
+        {name: item.title, path: 'detail'}
+    ]
+}
+
+---
+<BaseLayout setup={propsObj} title={title}>
+    <article>
+    
+        <header>
+            <h1>{item.title}</h1>
+        </header>
+
+        <div set:html={item.content.html}></div>
+        
+        <a href="/the-industry/">Back to Articles</a>
+
+    </article>
+</BaseLayout>

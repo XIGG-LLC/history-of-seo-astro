@@ -1,0 +1,65 @@
+---
+let { 
+    paths,
+    separator = "'/'"
+} = Astro.props;
+
+let links = [{name: 'Home', path: '/', active: false}];
+
+if (paths === null || paths.length === 0) {
+    links.find(link => link.name === 'Home').active = true;
+}
+
+function getPaths() {
+    const last = Object.keys(paths).length - 1;
+    let path = links.map(o => o.path).join("").replace(/\/\//g, '/');
+
+    paths.forEach(function(item, index) {
+        path += item.path;
+        let active = (index === last);
+        links.push({name: item.name, path: path, active: active});
+    });
+}
+if (paths) {
+    getPaths();
+}
+---
+<style define:vars={{ separator }}>
+    .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem 0.75rem 0;
+        margin-bottom: 1rem;
+        padding-inline: 1rem;
+        list-style: none;
+        background-color: #eee;
+        border: solid 1px #ddd;
+    }
+    .breadcrumb-item a {
+        color: #666;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        display: inline-block;
+        padding-right: 0;
+        padding-left: 0.5rem;
+        content: var(--separator);
+    }
+    
+</style>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        {links && links.map(link => (
+            <li class="breadcrumb-item">
+                {link.active === false && (
+                    <a href={link.path}>{ link.name }</a>
+                )}
+                {link.active === true && (
+                    <span>{ link.name }</span>
+                )}
+            </li>
+        ))}
+    </ol>
+</nav>

@@ -1,0 +1,11 @@
+---
+import Navigation from './Navigation.astro';
+
+---
+
+<header class="main">
+    <div class="container">
+        <a href="/" class="logo"><img src={(await import("../images/the-history-of-seo-logo.gif")).default} width="207" height="30" alt="The History of SEO" /></a>
+        <Navigation />
+    </div>
+</header>

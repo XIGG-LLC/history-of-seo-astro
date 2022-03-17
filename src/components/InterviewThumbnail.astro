@@ -1,0 +1,40 @@
+---
+const { src, altText, extraCss } = Astro.props;
+const cssClass = `thumbnail${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
+
+const fileExtIndex = src.lastIndexOf('.');
+const fileName = src.substring(0, fileExtIndex);
+const fileExt = src.substring(fileExtIndex);
+let imgName = null;
+
+switch (fileExt.toLowerCase()) {
+    case '.jpg':
+        imgName = (await import(`../images/interviewees/${fileName}.jpg`)).default;
+        break;
+    case '.jpeg':
+        imgName = (await import(`../images/interviewees/${fileName}.jpeg`)).default;
+        break;
+    case '.gif':
+        imgName = (await import(`../images/interviewees/${fileName}.gif`)).default;
+        break;
+    case '.png':
+        imgName = (await import(`../images/interviewees/${fileName}.png`)).default;
+        break;
+    default: 
+        imgName = (await import(`../images/interviewees/${fileName}.jpg`)).default;
+}
+
+---
+<style>
+    .thumbnail {
+        float: left;
+        margin: 0 1rem 1rem 0;
+    }
+</style>
+    <img 
+        class={cssClass}
+        src={imgName} 
+        width="100" 
+        height="100" 
+        alt={altText ?? ''}
+        title={altText ?? ''} />

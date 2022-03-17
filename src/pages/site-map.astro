@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+let data = Astro.fetchContent('../data/interviews/*.md');
+
+// Sort by 'sortorder' field
+if (data.length) {
+    data = data.sort((a, b) => {
+        return (a.sortorder < b.sortorder) ? -1 : 1;
+    }).filter(d => d.sortorder !== 0);
+}
+
+const setup = {
+    title: "Site Map",
+    breadBrumbPaths: [{name: 'Site Map'}]
+};
+---
+<BaseLayout setup={setup}>
+    <h1>The History of SEO Site Map</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li>
+            <a href="/seo-interviews/">The Interviews</a>
+            {data && (
+            <ul>
+                {data.map(interview => (
+                    <li>
+                        <a href={`/seo-interviews/${interview.slug}/`}>{ interview.title }</a>
+                        <ul>
+                            <li><a href={`/seo-interviews/${interview.slug}/interview/`}>Interview</a></li>
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+            )}
+        </li>
+        <li><a href="/the-industry/">The Industry</a></li>
+        <li><a href="/about/">About</a></li>
+    </ul>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+const { link, altText, extraCss } = Astro.props;
+const cssClass = `action-button${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
+---
+<style lang="scss">
+    .action-button {
+        color: hsl(18, 98%, 59%);
+        display: inline-block;
+        margin-right: 1rem;
+        text-decoration: none;
+        img {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+</style>
+<a href={link} class={cssClass}>
+    <img 
+        src={(await import('../images/action-button.png')).default} 
+        width="24" 
+        height="25" 
+        alt={altText ?? ''}
+        title={altText ?? ''} />
+    <slot />
+</a>

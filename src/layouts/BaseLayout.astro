@@ -1,0 +1,39 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BreadCrumb from '../components/BreadCrumb.astro';
+import '../styles/main.scss';
+const { setup } = Astro.props;
+const title = `ASTRO: ${setup.title} | The History of SEO` ?? 'Welcome!';
+const breadCrumbLinks = setup.breadBrumbPaths ?? null;
+---
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<meta name="viewport" content="width=device-width" />
+	<title>{title}</title>
+	<meta name="description" content={setup.metaDescription ?? title} />
+	{setup.metaKeywords && setup.metaKeywords !== '' && (
+		<meta name="keywords" content={setup.metaKeywords ?? ''} />
+	)}
+	
+	<link rel="canonical" href={Astro.request.canonicalURL} />
+</head>
+
+<body>
+	<Header />
+
+	<main class="main">
+		<div class="container">
+			{breadCrumbLinks && (
+				<BreadCrumb paths={breadCrumbLinks} />
+			)}
+			<slot />
+		</div>
+	</main>
+	<Footer />
+</body>
+
+</html>

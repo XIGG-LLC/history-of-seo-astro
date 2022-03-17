@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Trebuchet MS" , Helvetica, sans-serif;
+    font-size: 16px;
+    color: #7b6b5c;
+    margin: 0;
+    padding :0;
+    line-height: 1.5;
+}
+
+body {
+    background-color: #fff;
+}
+
+a, a:link {
+    color: #fc4d00;
+    text-decoration: none;;
+}
+
+a:is(:active, :hover) {
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-top: 0;
+}
