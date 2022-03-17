@@ -1,12 +1,7 @@
-# Astro Starter Kit: Minimal
+# The History of SEO
+## Built in [Astro Static Site Generator](https://astro.build/)!
 
-```
-npm init astro -- --template minimal
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This is a site conversion from Pixelsilk to the Astro Static Site Generator.
 
 ## 🚀 Project Structure
 
