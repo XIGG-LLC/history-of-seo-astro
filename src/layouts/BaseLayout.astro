@@ -2,10 +2,12 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BreadCrumb from '../components/BreadCrumb.astro';
+import Image from '../components/Image.astro';
 import '../styles/main.scss';
 const { setup } = Astro.props;
 const title = `ASTRO: ${setup.title} | The History of SEO` ?? 'Welcome!';
 const breadCrumbLinks = setup.breadBrumbPaths ?? null;
+const isHomePage = (Astro.request.url.pathname === '/') ? true : false;
 ---
 <html lang="en">
 
@@ -27,10 +29,23 @@ const breadCrumbLinks = setup.breadBrumbPaths ?? null;
 
 	<main class="main">
 		<div class="container">
-			{breadCrumbLinks && (
-				<BreadCrumb paths={breadCrumbLinks} />
-			)}
-			<slot />
+			<div class={`content-cols${(isHomePage) ? ' cols-home' : ''}`}>
+				<div class="col-1">
+					{breadCrumbLinks && (
+						<BreadCrumb paths={breadCrumbLinks} />
+					)}
+					<slot />
+				</div>
+				<div class="col-2">
+					<div class="img-wrapper">
+						<Image src="generic-graphic.jpg" width="400" height="200" />
+					</div>
+					<div class="brown">
+					
+						<div></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</main>
 	<Footer />
