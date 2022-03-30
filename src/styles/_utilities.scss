@@ -1,11 +1,13 @@
 $base-size: 1rem;
 
 $size-map: (
+    "0": 0,
     "1": $base-size * 0.25,
     "2": $base-size * 0.5,
     "3": $base-size * 1,
     "4": $base-size * 1.25,
     "5": $base-size * 2,
+    "6": $base-size * 3,
 );
 
 

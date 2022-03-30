@@ -92,18 +92,18 @@ footer.main {
     }
 }
 
-@media only screen and (max-width: 919px) {
+@media only screen and (max-width: 991px) {
     .content-cols .col-2 {
         display: none;
     }
 }
-@media only screen and (min-width: 920px) {
+@media only screen and (min-width: 992px) {
     .content-cols {
         display: flex;
         gap: 5%;
         .col-1 {
             padding: 1rem 0 2rem;
-            // width: 75%;
+            width: 78%;
         }
         .col-2 {
             background-color: #e7d8c8;
@@ -167,6 +167,9 @@ footer.main {
             }
         }
         &.cols-home {
+            .col-1 {
+                width: 61%;
+            }
             .col-2 {
                 min-width: 400px;
                 .brown {

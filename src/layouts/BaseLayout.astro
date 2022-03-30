@@ -5,7 +5,8 @@ import BreadCrumb from '../components/BreadCrumb.astro';
 import Image from '../components/Image.astro';
 import '../styles/main.scss';
 const { setup } = Astro.props;
-const title = `ASTRO: ${setup.title} | The History of SEO` ?? 'Welcome!';
+const titlePrefix = (import.meta.env.DEV) ? 'ASTRO: ' : '';
+const title = `${titlePrefix}${setup.title} | The History of SEO` ?? 'Welcome!';
 const breadCrumbLinks = setup.breadBrumbPaths ?? null;
 const isHomePage = (Astro.request.url.pathname === '/') ? true : false;
 ---
@@ -30,7 +31,7 @@ const isHomePage = (Astro.request.url.pathname === '/') ? true : false;
 	<main class="main">
 		<div class="container">
 			<div class={`content-cols${(isHomePage) ? ' cols-home' : ''}`}>
-				<div class="col-1">
+				<div class="col-1 p-block-3">
 					{breadCrumbLinks && (
 						<BreadCrumb paths={breadCrumbLinks} />
 					)}

@@ -12,6 +12,11 @@ const cssClass = `action-button${(extraCss !== undefined) ? ` ${extraCss}` : ''}
             display: inline-block;
             vertical-align: middle;
         }
+        @media only screen and (max-width: 992px) {
+            & {
+                padding: .5rem;
+            }
+        }
     }
 </style>
 <a href={link} class={cssClass}>
