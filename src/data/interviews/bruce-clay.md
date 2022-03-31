@@ -10,7 +10,7 @@ sortorder: 6
 featuredsort: 2
 featureddescription: <p>Bruce Clay, president and CEO of Bruce Clay Inc. considers himself fortunate to have participated in the formation of an industry. Bruce started his company in 1996 when he got serious and decided that this was going to be a real business. By “this” he says, there was no name...</p>
 thumbnail: bruce-clay-small.jpg
-ummaryMetaDescription: A summary of the interview with Bruce Clay by Mark Knowles for The History of SEO website.
+summaryMetaDescription: A summary of the interview with Bruce Clay by Mark Knowles for The History of SEO website.
 summaryMetaKeywords: The History of SEO, History of SEO, Bruce Clay Inc, Search Engine Optimization, The Search Engine, Search Engine, Engine Optimization, Bruce Clay, Mark Knowles, Bruce, Infoseek, Summary, Interview
 metaDescription: Interview with Bruce Clay by Mark Knowles for The History of SEO website.
 metaKeywords: The History of SEO, History of SEO, Bruce Clay Inc, Search Engine Optimization, The Search Engines, Search Engine Ranking, Pay Per Click, Bruce Clay, Mark Knowles, Search Engine, Search Engines, The Internet, Engine Optimization, Bruce Clay, Infoseek, Bruce, Interview
