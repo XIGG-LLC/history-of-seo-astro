@@ -86,15 +86,23 @@ $size-map: (
     }
 
     &-primary {
-        --text-color: 29, 14%, 42%;
-        --border-color: 29, 14%, 65%;
+        --bg-color: 42, 100%, 50%;
+        --border-color: 42, 100%, 50%;
         --bg-opacity: 1;
-        background-color: hsla(var(--text-color), var(--bg-opacity));
+        background-color: hsla(var(--bg-color), var(--bg-opacity));
         border: solid 1px hsl(var(--border-color));
-        color: #fff;
+        color: #000;
+        &:is(:hover, :active) {
+            --bg-color: 35, 100%, 50%;
+        }
     }
 
-    &:is(:hover, :active) {
-        --bg-opacity: 0.85;
+    &-secondary {
+        --bg-color: 29, 14%, 42%;
+        --border-color: 29, 14%, 65%;
+        --bg-opacity: 1;
+        background-color: hsla(var(--bg-color), var(--bg-opacity));
+        border: solid 1px hsl(var(--border-color));
+        color: #fff;
     }
 }
