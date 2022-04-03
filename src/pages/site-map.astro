@@ -2,22 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Interview Data
-let interviewData = Astro.fetchContent('../data/interviews/*.md');
+let interviewData = await Astro.glob('../data/interviews/*.md');
 // Sort by 'sortorder' field
 if (interviewData.length) {
     interviewData = interviewData.sort((a, b) => {
-        return (a.sortorder < b.sortorder) ? -1 : 1;
-    }).filter(d => d.sortorder !== 0);
+        return (a.frontmatter.sortorder < b.frontmatter.sortorder) ? -1 : 1;
+    }).filter(d => d.frontmatter.sortorder !== 0);
 }
 
 // Industry Data
-let industryData = Astro.fetchContent('../data/industry-articles/*.md');
+let industryData = await Astro.glob('../data/industry-articles/*.md');
 
 // Sort by 'sortorder' field
 if (industryData.length) {
     industryData = industryData.sort((a, b) => {
-        return (a.sortorder < b.sortorder) ? -1 : 1;
-    }).filter(d => d.sortorder !== 0);
+        return (a.frontmatter.sortorder < b.frontmatter.sortorder) ? -1 : 1;
+    }).filter(d => d.frontmatter.sortorder !== 0);
 }
 
 const setup = {
@@ -35,9 +35,9 @@ const setup = {
             <ul>
                 {interviewData.map(page => (
                     <li>
-                        <a href={`/seo-interviews/${page.slug}/`}>{ page.title }</a>
+                        <a href={`/seo-interviews/${page.frontmatter.slug}/`}>{ page.frontmatter.title }</a>
                         <ul>
-                            <li><a href={`/seo-interviews/${page.slug}/interview/`}>Interview</a></li>
+                            <li><a href={`/seo-interviews/${page.frontmatter.slug}/interview/`}>Interview</a></li>
                         </ul>
                     </li>
                 ))}
@@ -49,7 +49,7 @@ const setup = {
             {industryData && (
             <ul>
                 {industryData.map(page => (
-                    <li><a href={`/the-industry/${page.slug}/`}>{ page.title }</a></li>
+                    <li><a href={`/the-industry/${page.frontmatter.slug}/`}>{ page.frontmatter.title }</a></li>
                 ))}
             </ul>
             )}

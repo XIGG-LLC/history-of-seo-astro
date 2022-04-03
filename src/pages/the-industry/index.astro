@@ -7,13 +7,13 @@ const propsObj = {
     breadBrumbPaths: [{name: 'The Industry', path: 'the-industry/'}]
 }
 
-let data = Astro.fetchContent('../../data/industry-articles/*.md');
+let data = await Astro.glob('../../data/industry-articles/*.md');
 
 // Sort by 'sortorder' field
 if (data.length) {
     data = data.sort((a, b) => {
-        return (a.sortorder < b.sortorder) ? -1 : 1;
-    }).filter(d => d.sortorder !== 0);
+        return (a.frontmatter.sortorder < b.frontmatter.sortorder) ? -1 : 1;
+    }).filter(d => d.frontmatter.sortorder !== 0);
 }
 
 ---
@@ -21,8 +21,8 @@ if (data.length) {
 <BaseLayout setup={propsObj}>
     {data && data.map(item => (
         <article>
-            <h2><a href={`/the-industry/${item.slug}/`}>{item.title}</a></h2>
-            <div set:html={item.description}></div>
+            <h2><a href={`/the-industry/${item.frontmatter.slug}/`}>{item.frontmatter.title}</a></h2>
+            <div set:html={item.frontmatter.description}></div>
         </article>
     ))}
 </BaseLayout>

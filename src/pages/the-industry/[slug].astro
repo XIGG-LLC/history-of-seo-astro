@@ -1,38 +1,40 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Markdown } from 'astro/components';
 
 export async function getStaticPaths() {
-    let data = Astro.fetchContent('../../data/industry-articles/*.md');
+    let data = await Astro.glob('../../data/industry-articles/*.md');
     
-    return data.filter(d => d.sortorder !== 0).map(item => {
+    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
         return {
-            params: {slug: item.slug },
+            params: {slug: item.frontmatter.slug },
             props: { item }
         }
     });
 }
 
 const { item } = Astro.props;
-const title = item.title;
+const title = item.frontmatter.title;
 const propsObj = {
-	title: item.title,
-    metaDescription: item.metaDescription ?? '',
-    metaKeywords: item.metaKeywords ?? '',
+	title: item.frontmatter.title,
+    metaDescription: item.frontmatter.metaDescription ?? '',
+    metaKeywords: item.frontmatter.metaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Industry', path: 'the-industry/'},
-        {name: item.title, path: 'detail'}
+        {name: item.frontmatter.title, path: 'detail'}
     ]
 }
+const content = await fetch(item.file).then(res => res.text());
 
 ---
 <BaseLayout setup={propsObj} title={title}>
     <article>
     
         <header>
-            <h1>{item.title}</h1>
+            <h1>{item.frontmatter.title}</h1>
         </header>
 
-        <div set:html={item.content.html}></div>
+        <Markdown content={content} />
         
         <a href="/the-industry/">Back to Articles</a>
 

@@ -3,16 +3,22 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BreadCrumb from '../components/BreadCrumb.astro';
 import Image from '../components/Image.astro';
+import Robots from '../components/Robots.astro';
 import '../styles/main.scss';
-const { setup } = Astro.props;
+const { setup = {
+	showCanonical: true
+} } = Astro.props;
 const titlePrefix = (import.meta.env.DEV) ? 'ASTRO: ' : '';
 const title = `${titlePrefix}${setup.title} | The History of SEO` ?? 'Welcome!';
 const breadCrumbLinks = setup.breadBrumbPaths ?? null;
-const isHomePage = (Astro.request.url.pathname === '/') ? true : false;
+const url = new URL(Astro.request.url);
+const isHomePage = (url.pathname === '/') ? true : false;
+
 ---
 <html lang="en">
 
 <head>
+<Robots />
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 	<meta name="viewport" content="width=device-width" />
@@ -21,8 +27,9 @@ const isHomePage = (Astro.request.url.pathname === '/') ? true : false;
 	{setup.metaKeywords && setup.metaKeywords !== '' && (
 		<meta name="keywords" content={setup.metaKeywords ?? ''} />
 	)}
-	
-	<link rel="canonical" href={Astro.request.canonicalURL} />
+	{setup.showCanonical && (
+		<link rel="canonical" href={Astro.canonicalURL} />
+	)}
 </head>
 
 <body>
