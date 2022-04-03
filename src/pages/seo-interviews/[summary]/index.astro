@@ -4,29 +4,29 @@ import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-    let data = Astro.fetchContent('../../../data/interviews/*.md');
+    let data = await Astro.glob('../../../data/interviews/*.md');
     
-    return data.filter(d => d.sortorder !== 0).map(item => {
+    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
         return {
-            params: {summary: item.slug },
+            params: {summary: item.frontmatter.slug },
             props: { item }
         }
     });
 }
 
 const { item } = Astro.props;
-const title = item.title;
+const title = item.frontmatter.title;
 const propsObj = {
-	title: `Summary of Interview with ${item.title}`,
-    metaDescription: item.summaryMetaDescription ?? '',
-    metaKeywords: item.summaryMetaKeywords ?? '',
+	title: `Summary of Interview with ${item.frontmatter.title}`,
+    metaDescription: item.frontmatter.summaryMetaDescription ?? '',
+    metaKeywords: item.frontmatter.summaryMetaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
-        {name: item.title, path: ``}
+        {name: item.frontmatter.title, path: ``}
     ]
 }
 
-const descriptionText = item.mediumdescription ?? item.description;
+const descriptionText = item.frontmatter.mediumdescription ?? item.frontmatter.description;
 
 ---
 <style>
@@ -38,19 +38,19 @@ const descriptionText = item.mediumdescription ?? item.description;
     <article>
     
         <header>
-            <h1>{item.title}</h1>
+            <h1>{item.frontmatter.title}</h1>
         </header>
 
         <div>
-            {item.thumbnail && item.thumbnail !== '' && (
-                <InterviewThumbnail src={item.thumbnail} />
+            {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
+                <InterviewThumbnail src={item.frontmatter.thumbnail} />
             )}
             <div set:html={descriptionText}></div>
             
         </div>
 
         <ActionButton 
-            link={`/seo-interviews/${item.slug}/interview/`}
+            link={`/seo-interviews/${item.frontmatter.slug}/interview/`}
             extraCss="mb-2"
             altText="Read the entire interview">interview</ActionButton>
 

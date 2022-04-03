@@ -1,0 +1,8 @@
+---
+    const prodHost = 'thehistoryofseo.com';
+    const currentHost = Astro.request.url.host;
+---
+
+{currentHost !== prodHost && (
+    <meta name="robots" content="noindex,nofollow" />
+)}

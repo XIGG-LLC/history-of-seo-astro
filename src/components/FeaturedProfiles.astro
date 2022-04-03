@@ -2,12 +2,12 @@
 import ActionButton from '../components/ActionButton.astro';
 import InterviewThumbnail from '../components/InterviewThumbnail.astro';
 
-let data = Astro.fetchContent('../data/interviews/*.md');
+let data = await Astro.glob('../data/interviews/*.md');
 
 // Sort by 'sortorder' field
 if (data.length) {
-    data = data.filter(d => d.featuredsort !== 0).sort((a, b) => {
-        return (a.featuredsort < b.featuredsort) ? -1 : 1;
+    data = data.filter(d => d.frontmatter.featuredsort !== 0).sort((a, b) => {
+        return (a.frontmatter.featuredsort < b.frontmatter.featuredsort) ? -1 : 1;
     });
 }
 ---
@@ -30,19 +30,19 @@ if (data.length) {
 {data && data.map(profile => (
     
     <div class="homeProfile">
-        <InterviewThumbnail src={profile.thumbnail} />
+        <InterviewThumbnail src={profile.frontmatter.thumbnail} />
         <div>
-            <h3><a href={`/seo-interviews/${profile.slug}/`}>{profile.title}</a></h3>
-            <Fragment set:html={profile.featureddescription}></Fragment>
+            <h3><a href={`/seo-interviews/${profile.frontmatter.slug}/`}>{profile.frontmatter.title}</a></h3>
+            <Fragment set:html={profile.frontmatter.featureddescription}></Fragment>
         
             <div>
                 <ActionButton 
-                    link={`/seo-interviews/${profile.slug}/`}
+                    link={`/seo-interviews/${profile.frontmatter.slug}/`}
                     extraCss="mb-2"
                     altText="Read the summary">summary</ActionButton>
 
                 <ActionButton 
-                    link={`/seo-interviews/${profile.slug}/interview/`}
+                    link={`/seo-interviews/${profile.frontmatter.slug}/interview/`}
                     extraCss="mb-2"
                     altText="Read the entire interview">interview</ActionButton>
             </div>

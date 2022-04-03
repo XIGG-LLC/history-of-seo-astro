@@ -1,0 +1,27 @@
+---
+import Layout from './BaseLayout.astro';
+
+const { content } = Astro.props;
+const setup = {
+    title: content.pageTitle,
+    metaDescription: content.metaDescription,
+    metaKeywords: content.metaKeywords,
+    breadBrumbPaths: [
+        {name: 'The Industry', path: 'the-industry/'},
+        {name: content.title, path: 'detail'}
+    ]
+};
+---
+<Layout setup={setup}>
+    <article>
+    
+        <header>
+            <h1>{content.title}</h1>
+        </header>
+
+        <div set:html={content.astro.html}></div>
+        
+        <a href="/the-industry/">Back to Articles</a>
+
+    </article>
+</Layout>

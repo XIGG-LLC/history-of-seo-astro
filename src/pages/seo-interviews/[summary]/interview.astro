@@ -1,30 +1,32 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
+import { Markdown } from 'astro/components';
 
 export async function getStaticPaths() {
-    let data = Astro.fetchContent('../../../data/interviews/*.md');
+    let data = await Astro.glob('../../../data/interviews/*.md');
     
-    return data.filter(d => d.sortorder !== 0).map(item => {
+    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
         return {
-            params: { summary: item.slug },
+            params: { summary: item.frontmatter.slug },
             props: { item }
         }
     });
 }
 
 const { item } = Astro.props;
-const title = item.SummaryPageTitle;
+const title = item.frontmatter.SummaryPageTitle;
 const propsObj = {
-	title: `Interview with ${item.title}`,
-    metaDescription: item.metaDescription ?? '',
-    metaKeywords: item.metaKeywords ?? '',
+	title: `Interview with ${item.frontmatter.title}`,
+    metaDescription: item.frontmatter.metaDescription ?? '',
+    metaKeywords: item.frontmatter.metaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
-        {name: item.title, path: `${item.slug}/`},
+        {name: item.frontmatter.title, path: `${item.frontmatter.slug}/`},
         {name: 'Interview', path: 'interview/'}
     ]
 }
+const content = await fetch(item.file).then(res => res.text());
 
 ---
 <style>
@@ -40,14 +42,16 @@ const propsObj = {
     <article>
     
         <header>
-            <h1>Interview with {item.title}</h1>
+            <h1>Interview with {item.frontmatter.title}</h1>
         </header>
         
         <div>
-            {item.thumbnail && item.thumbnail !== '' && (
-                <InterviewThumbnail src={item.thumbnail} />
+            {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
+                <InterviewThumbnail src={item.frontmatter.thumbnail} />
             )}
-            <div set:html={item.content.html}></div>
+            <Markdown content={content} />
+            
+            <!-- <div set:html={item.frontmatter.content.html}></div> -->
         </div>
 
     </article>

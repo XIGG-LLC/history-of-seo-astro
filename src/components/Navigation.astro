@@ -8,7 +8,8 @@ const menuItems = [
 ];
 
 function isCurrentParent(url) {
-    const path = Astro.request.url.pathname;
+    const requestUrl = new URL(Astro.request.url);
+    const path = requestUrl.pathname;
     if (url === '/' && path === '/') {
         return true;
     }
