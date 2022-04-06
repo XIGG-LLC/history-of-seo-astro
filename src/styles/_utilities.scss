@@ -85,7 +85,8 @@ $size-map: (
         display: block;
     }
 
-    &-primary {
+    &-primary,
+    &-primary:link {
         --bg-color: 42, 100%, 50%;
         --border-color: 42, 100%, 50%;
         --bg-opacity: 1;
@@ -97,7 +98,8 @@ $size-map: (
         }
     }
 
-    &-secondary {
+    &-secondary,
+    &-secondary:link {
         --bg-color: 29, 14%, 42%;
         --border-color: 29, 14%, 65%;
         --bg-opacity: 1;
