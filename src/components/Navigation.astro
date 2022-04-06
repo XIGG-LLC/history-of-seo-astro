@@ -99,7 +99,7 @@ function isCurrentParent(url) {
         }
         nav {
             position: absolute;
-            bottom: 0.5rem;
+            bottom: 1rem;
             left: 1rem;
             z-index: 2;
             ul {
@@ -113,9 +113,31 @@ function isCurrentParent(url) {
             a {
                 color: #333;
                 font-size: 1.25rem;
+                padding: 0.5rem;
+                position: relative;
                 text-decoration: none;
                 &.current {
                     font-weight: bold;
+                }
+                &::after {
+                    --triangle-size: 8px;
+                    --triangle-color: #fff;
+                    display: none;
+                    content: "";
+                    position: absolute;
+                    bottom: -0.2rem;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 0;
+                    border-left: solid var(--triangle-size) transparent;
+                    border-right: solid var(--triangle-size) transparent;
+                    border-bottom: solid var(--triangle-size) var(--triangle-color);
+                }
+                &:is(:hover, :active) {
+                    &::after {
+                        display: block;
+                    }
                 }
             }
         }
