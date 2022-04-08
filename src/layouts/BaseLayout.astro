@@ -13,7 +13,7 @@ const title = `${titlePrefix}${setup.title} | The History of SEO` ?? 'Welcome!';
 const breadCrumbLinks = setup.breadBrumbPaths ?? null;
 const url = new URL(Astro.request.url);
 const isHomePage = (url.pathname === '/') ? true : false;
-
+const showCannonicalLink = setup.showCanonical ?? true;
 ---
 <html lang="en">
 
@@ -27,7 +27,7 @@ const isHomePage = (url.pathname === '/') ? true : false;
 	{setup.metaKeywords && setup.metaKeywords !== '' && (
 		<meta name="keywords" content={setup.metaKeywords ?? ''} />
 	)}
-	{setup.showCanonical && (
+	{showCannonicalLink && (
 		<link rel="canonical" href={Astro.canonicalURL} />
 	)}
 </head>
