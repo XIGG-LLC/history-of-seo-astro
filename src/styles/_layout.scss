@@ -12,7 +12,7 @@ header.main {
     // }
 
     background-color: hsl(42, 100%, 50%);
-    background-image: url('/the-history-of-seo-1x5.png');
+    background-image: url('/assets/theme/the-history-of-seo-1x5.png');
     background-repeat: repeat-x;
     background-position: top center;
     // background-position: 50px center;
@@ -28,7 +28,7 @@ header.main {
         min-height: 120px;
         &::after {
             content: "";
-            background-image: url('/history-timeline.jpg');
+            background-image: url('/assets/theme/history-timeline.jpg');
             position: absolute;
             top:26px;
             //left: 50%;
