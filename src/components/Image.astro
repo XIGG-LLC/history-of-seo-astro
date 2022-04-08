@@ -2,28 +2,7 @@
 const { src, altText, extraCss, width, height } = Astro.props;
 const cssClass = `${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
 
-const fileExtIndex = src.lastIndexOf('.');
-const fileName = src.substring(0, fileExtIndex);
-const fileExt = src.substring(fileExtIndex);
-let imgName = null;
-
-switch (fileExt.toLowerCase()) {
-    case '.jpg':
-        imgName = (await import(`../images/${fileName}.jpg`)).default;
-        break;
-    case '.jpeg':
-        imgName = (await import(`../images/${fileName}.jpeg`)).default;
-        break;
-    case '.gif':
-        imgName = (await import(`../images/${fileName}.gif`)).default;
-        break;
-    case '.png':
-        imgName = (await import(`../images/${fileName}.png`)).default;
-        break;
-    default: 
-        imgName = (await import(`../images/${fileName}.jpg`)).default;
-}
-
+const imgName = `/assets/${src}`;
 
 ---
 {src && (
