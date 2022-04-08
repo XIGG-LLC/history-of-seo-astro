@@ -74,3 +74,37 @@ $size-map: (
     // }
 
 }
+
+.btn {
+    border-radius: 0.25rem;
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+
+    &.block {
+        display: block;
+    }
+
+    &-primary,
+    &-primary:link {
+        --bg-color: 42, 100%, 50%;
+        --border-color: 42, 100%, 50%;
+        --bg-opacity: 1;
+        background-color: hsla(var(--bg-color), var(--bg-opacity));
+        border: solid 1px hsl(var(--border-color));
+        color: #000;
+        &:is(:hover, :active) {
+            --bg-color: 35, 100%, 50%;
+        }
+    }
+
+    &-secondary,
+    &-secondary:link {
+        --bg-color: 29, 14%, 42%;
+        --border-color: 29, 14%, 65%;
+        --bg-opacity: 1;
+        background-color: hsla(var(--bg-color), var(--bg-opacity));
+        border: solid 1px hsl(var(--border-color));
+        color: #fff;
+    }
+}

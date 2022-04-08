@@ -49,9 +49,10 @@ const content = await fetch(item.file).then(res => res.text());
             {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
                 <InterviewThumbnail src={item.frontmatter.thumbnail} />
             )}
-            <Markdown content={content} />
             
-            <!-- <div set:html={item.frontmatter.content.html}></div> -->
+            <Markdown content={content} />
+
+            <a href="/seo-interviews/" class="btn btn-primary m-block-start-3">Back to Interviews</a>
         </div>
 
     </article>

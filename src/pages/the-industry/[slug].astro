@@ -29,14 +29,13 @@ const content = await fetch(item.file).then(res => res.text());
 ---
 <BaseLayout setup={propsObj} title={title}>
     <article>
-    
         <header>
             <h1>{item.frontmatter.title}</h1>
         </header>
 
         <Markdown content={content} />
         
-        <a href="/the-industry/">Back to Articles</a>
+        <a href="/the-industry/" class="btn btn-primary m-block-start-3">Back to Articles</a>
 
     </article>
 </BaseLayout>

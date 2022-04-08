@@ -19,13 +19,14 @@ body {
 }
 
 a, a:link {
-    color: #fc4d00;
-    text-decoration: none;;
+    color: #564637;
+    //color: #fc4d00;
+    //text-decoration: none;
 }
 
-a:is(:active, :hover) {
-    text-decoration: underline;
-}
+// a:is(:active, :hover) {
+//     text-decoration: underline;
+// }
 
 p {
     margin-top: 0;
