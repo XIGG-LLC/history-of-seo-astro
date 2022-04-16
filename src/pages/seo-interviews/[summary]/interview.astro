@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const title = item.frontmatter.SummaryPageTitle;
 const propsObj = {
-	title: `Interview with ${item.frontmatter.title}`,
+	title: `Interview with ${item.frontmatter.title} | The History of SEO`,
     metaDescription: item.frontmatter.metaDescription ?? '',
     metaKeywords: item.frontmatter.metaKeywords ?? '',
     breadBrumbPaths: [

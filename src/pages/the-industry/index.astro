@@ -20,8 +20,8 @@ if (data.length) {
 
 <BaseLayout setup={propsObj}>
     {data && data.map(item => (
-        <article>
-            <h2><a href={`/the-industry/${item.frontmatter.slug}/`}>{item.frontmatter.title}</a></h2>
+        <article class="m-block-start-5">
+            <h2 class="m-block-end-2"><a href={`/the-industry/${item.frontmatter.slug}/`}>{item.frontmatter.title}</a></h2>
             <div set:html={item.frontmatter.description}></div>
         </article>
     ))}

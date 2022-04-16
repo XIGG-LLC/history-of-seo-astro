@@ -1,0 +1,28 @@
+---
+export interface Props {
+    title?: string,
+    description?: string
+}
+
+const { title, description } = Astro.props;
+
+// A list of branding strings to replace in the ogTitle
+const brandStrings = [
+    'The History of SEO -- ', 
+    ' | The History of SEO'
+];
+
+// Title for the Open Graph tag
+let ogTitle = title ?? '';
+
+for (let i = 0; i < brandStrings.length; i += 1) {
+	ogTitle = ogTitle.replace(brandStrings[i], '');
+}
+
+---
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.canonicalURL} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={description ?? ogTitle} />
+    <meta property="og:image" content="/favicon.ico" />
