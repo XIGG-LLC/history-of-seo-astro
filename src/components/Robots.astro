@@ -1,6 +1,7 @@
 ---
     const prodHost = 'thehistoryofseo.com';
-    const currentHost = Astro.request.url.host;
+    const requestUrl = new URL(Astro.request.url);
+    const currentHost = requestUrl.host;
 ---
 
 {currentHost !== prodHost && (
