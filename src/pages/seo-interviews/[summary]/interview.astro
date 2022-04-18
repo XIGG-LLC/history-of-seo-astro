@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
-import { Markdown } from 'astro/components';
 
 export async function getStaticPaths() {
     let data = await Astro.glob('../../../data/interviews/*.md');
@@ -26,8 +25,6 @@ const propsObj = {
         {name: 'Interview', path: 'interview/'}
     ]
 }
-const content = await fetch(item.file).then(res => res.text());
-
 ---
 <style>
 .back {
@@ -50,7 +47,7 @@ const content = await fetch(item.file).then(res => res.text());
                 <InterviewThumbnail src={item.frontmatter.thumbnail} />
             )}
             
-            <Markdown content={content} />
+            <item.Content />
 
             <a href="/seo-interviews/" class="btn btn-primary m-block-start-3">Back to Interviews</a>
         </div>

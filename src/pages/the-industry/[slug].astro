@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Markdown } from 'astro/components';
 
 export async function getStaticPaths() {
     let data = await Astro.glob('../../data/industry-articles/*.md');
@@ -24,7 +23,6 @@ const propsObj = {
         {name: item.frontmatter.title, path: 'detail'}
     ]
 }
-const content = await fetch(item.file).then(res => res.text());
 
 ---
 <BaseLayout setup={propsObj} title={title}>
@@ -33,7 +31,7 @@ const content = await fetch(item.file).then(res => res.text());
             <h1>{item.frontmatter.title}</h1>
         </header>
 
-        <Markdown content={content} />
+        <item.Content />
         
         <a href="/the-industry/" class="btn btn-primary m-block-start-3">Back to Articles</a>
 
