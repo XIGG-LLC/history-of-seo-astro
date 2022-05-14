@@ -1,0 +1,13 @@
+---
+export interface Props {
+    fullName: string;
+    appendColon?: boolean;
+    appendSpace?: boolean;
+}
+
+const { fullName, appendColon = true, appendSpace = true } = Astro.props;
+const firstName = fullName.split(' ')[0];
+
+---
+
+<strong><abbr title={fullName}>{firstName.toUpperCase()}{appendColon && (<Fragment>:</Fragment>)}</abbr></strong>{appendSpace && (<Fragment>&nbsp;</Fragment>)}

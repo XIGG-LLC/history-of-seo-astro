@@ -1,4 +1,7 @@
 ---
+setup: |
+    import InterviewName from '/src/components/InterviewName.astro'
+    
 title: NAME
 slug: SLUG
 

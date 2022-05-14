@@ -1,4 +1,6 @@
 ---
+setup: |
+    import InterviewName from '/src/components/InterviewName.astro'
 title: Eric Ward
 slug: eric-ward
 
@@ -16,12 +18,12 @@ metaDescription:
 metaKeywords: 
 ---
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> We are here with Eric Ward, president of <a target="_self" href="http://www.ericward.com">EricWard.com</a> and “the original” link builder in the world of the Internet. Eric, thanks for joining us this morning.</p>
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> Thanks for inviting me. I'm thrilled to be here.</p>
+<p><InterviewName fullName="Mark Knowles" />We are here with Eric Ward, president of <a target="_self" href="http://www.ericward.com">EricWard.com</a> and “the original” link builder in the world of the Internet. Eric, thanks for joining us this morning.</p>
+<p><InterviewName fullName="Eric Ward" />Thanks for inviting me. I'm thrilled to be here.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> The History of SEO wants to ask you to back up in time and walk us through how you got into SEO and what motivated you.</p>
+<p><InterviewName fullName="Mark Knowles" />The History of SEO wants to ask you to back up in time and walk us through how you got into SEO and what motivated you.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> Sure. Like a lot of guys, it was almost by accident because there was really no industry and nobody had any idea there would be one. When I started nearly 20 years ago, my professional background was in advertising, marketing and public relations. I was working for Whittle Communications. Most people don't know that name. They're more familiar with some of Whittle Communications products and services.</p>
+<p><InterviewName fullName="Eric Ward" />Sure. Like a lot of guys, it was almost by accident because there was really no industry and nobody had any idea there would be one. When I started nearly 20 years ago, my professional background was in advertising, marketing and public relations. I was working for Whittle Communications. Most people don't know that name. They're more familiar with some of Whittle Communications products and services.</p>
 <p>For example, if you've seen those huge posters in dentist's offices with a single sponsor like Crest toothpaste, that’s a Whittle Communications property. My title was, Marketing Director, which sounded very impressive. I flew all over the country, selling these advertising deals. </p>
 
 <p>I was the guy putting on the suit and smiling—and pitching a nontraditional medium. This helped me when the Internet started to blossom because I liked nontraditional advertising and marketing approaches.</p>
@@ -38,14 +40,14 @@ metaKeywords:
 
 <p>Then I got my first nibble, an email request for a phone meeting, from a fellow named Jeff Bezos.  That evening he called, and told me his plans to launch an online bookstore. My wife was doing homework in the living room. I'm in the kitchen. We're 10 feet apart and I remember covering the receiver of the phone and saying, "This guy is thinking about launching an online bookstore." And I remember us both looking at each other like "That'll never work."</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> [laughs] </p>
+<p><InterviewName fullName="Mark Knowles" />[laughs] </p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>It was <a href="http://www.amazon.com" target="_self">Amazon.com.</a> I said "Sure. I'll launch your bookstore or I'll be your publicist or whatever." I did do their very first announcement and publicity—a link building campaign—for the premiere debut of Amazon.com Books. </p>
+<p><InterviewName fullName="Eric Ward" />It was <a href="http://www.amazon.com" target="_self">Amazon.com.</a> I said "Sure. I'll launch your bookstore or I'll be your publicist or whatever." I did do their very first announcement and publicity—a link building campaign—for the premiere debut of Amazon.com Books. </p>
 
 <p>I'm working solo and the business is coming in. I've got a website. I'm the real deal now. And I’m still working from my kitchen table.  I remember emailing Jerry Yang who was still in school at Stanford and running Yahoo on the Akebono server there as a hobby with David Filo, and I asked him to create a category in Yahoo! for web promotion, because there wasn’t one yet.  It is hard to believe there was a time when there was no web promotion industry, but there was.  I’ve got the email reply from him <a target="_self" href="http://www.ericward.com/yahoo.html"></a><a href="http://www.ericward.com/yahoo.html" target="_self">up at my site</a>.</p>
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> Wow.</p>
+<p><InterviewName fullName="Mark Knowles" />Wow.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>There were several lists that you hung on and participated in. Then, in ’96, I was invited to speak at a conference by Glenn Fleishman, who ran the discussion list I was on. Glenn was hired by Adobe to be the chairperson for a series of conferences: the Adobe Internet Development Conference Series.</p>
+<p><InterviewName fullName="Eric Ward" />There were several lists that you hung on and participated in. Then, in ’96, I was invited to speak at a conference by Glenn Fleishman, who ran the discussion list I was on. Glenn was hired by Adobe to be the chairperson for a series of conferences: the Adobe Internet Development Conference Series.</p>
 
 <p>He knew of me from his discussion list and sent me an email asking me if I had ever spoken publicly before and I said, "No." He said, "Would you be interested in flying out to San Francisco for the Adobe Internet Marketing Conference?"</p>
 
@@ -58,42 +60,42 @@ metaKeywords:
 <p>Back then Danny Sullivan had a site at calafia.com, "<a href="http://web.archive.org/web/19970216193333/http:/calafia.com/webmasters/" target="_self">The Webmaster's Guide to Search Engines</a>." I totally loved his website because it helped my clients. I wasn't interested in anything that had to do with algorithms or ranking because I always viewed myself as a publicist link builder, public relations, just doing it online.</p>
 <p>So I was continually steering my clients to Danny's site because he had a section devoted to every engine. And "Here's how you rank well for Lycos; here's how you rank well for AltaVista based on all of those first generation engines.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> Right. And this is prior to "Search Engine Watch?"</p>
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>Yes. "Search Engine Watch" doesn't even exist yet. It's located at <a target="_self" href="http://searchengineland.com/">http://www.calafia.com/webmasters.</a></p>
+<p><InterviewName fullName="Mark Knowles" />Right. And this is prior to "Search Engine Watch?"</p>
+<p><InterviewName fullName="Eric Ward" />Yes. "Search Engine Watch" doesn't even exist yet. It's located at <a target="_self" href="http://searchengineland.com/">http://www.calafia.com/webmasters.</a></p>
 <p>Then Danny made the decision to go to a subscription model. Now, we know what Danny is today. But there was a time when Danny got his very first contribution of 20 bucks from a paid subscriber—and I was that subscriber.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> That's an excellent little tidbit. I did not know this.</p>
+<p><InterviewName fullName="Mark Knowles" />That's an excellent little tidbit. I did not know this.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> I was Danny Sullivan's first paid member.</p>
+<p><InterviewName fullName="Eric Ward" />I was Danny Sullivan's first paid member.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> How did you pay him?</p>
+<p><InterviewName fullName="Mark Knowles" />How did you pay him?</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> I sent him a check via the mail.  There was no PayPal. I did it because he was making my job easier saving me time. God, I didn’t want to figure out how Lycos works. </p>
+<p><InterviewName fullName="Eric Ward" />I sent him a check via the mail.  There was no PayPal. I did it because he was making my job easier saving me time. God, I didn’t want to figure out how Lycos works. </p>
 
 <p>By speaking at the conferences, I'm getting more business and getting publicity in magazines.  I’m involved in the launch of some really famous brands.  Windows Media Player, which used to be called netshow, was one of my big early projects.  Here’s an old <a target="_self" href="http://www.bit.ly/ay6vbr">original post</a>. It’s hard for me to fathom that software now on every PC started as a project I helped with.  Then, as universities started offering online marketing courses, I'm getting links from academia to my website, which is probably still why I rank as I do. I've got 15 year old links from universities. It's tough to beat those kind of links.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> So links start to matter.</p>
+<p><InterviewName fullName="Mark Knowles" />So links start to matter.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> Exactly. I had no idea it was coming. I now have to make the decision whether to grow and hire people, or stay a two person operation (my wife had left nursing and was working with me too).  And I decide not to because I'm earning a good living and getting to travel with her.  I liked the link building process, was still fascinated by it. So I made a choice early on that I was just going to be a sole proprietor. </p>
+<p><InterviewName fullName="Eric Ward" />Exactly. I had no idea it was coming. I now have to make the decision whether to grow and hire people, or stay a two person operation (my wife had left nursing and was working with me too).  And I decide not to because I'm earning a good living and getting to travel with her.  I liked the link building process, was still fascinated by it. So I made a choice early on that I was just going to be a sole proprietor. </p>
 
 <p>So Google comes on the scene. And believe it or not everyone thought they would never win. </p>
 <p>The only place that made sense to me to pursue links was from a site that was on topic to begin with. So the approach that I used ended up having value to the Google algorithm.  For the other engines, it was all on-site SEO, keyword stuffing, Meta tags, title tags, anything you could do to fool the them. It had nothing to do with links so there was no reason to launch a link building service.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong>Also, there was white hat SEOs back then too that were just utilizing those techniques to broadcast their message better.</p>
+<p><InterviewName fullName="Mark Knowles" />Also, there was white hat SEOs back then too that were just utilizing those techniques to broadcast their message better.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>Exactly. And because there weren't 4,000 other black hatters competing with you, you could be honest and if you were a vertical industry, you could succeed. If you sold industrial quality ball bearings, it's not like you had to worry about ranking top five in 1998.</p>
+<p><InterviewName fullName="Eric Ward" />Exactly. And because there weren't 4,000 other black hatters competing with you, you could be honest and if you were a vertical industry, you could succeed. If you sold industrial quality ball bearings, it's not like you had to worry about ranking top five in 1998.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong>Because people were preoccupied with the poker sites.</p>
+<p><InterviewName fullName="Mark Knowles" />Because people were preoccupied with the poker sites.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>Yes. For many industries and sites, on site optimization was all you needed.</p>
+<p><InterviewName fullName="Eric Ward" />Yes. For many industries and sites, on site optimization was all you needed.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong>Right.</p>
+<p><InterviewName fullName="Mark Knowles" />Right.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>I also got the chance to launch Link Exchange. Tony Hsieh hired me to launch the very first banner exchange program. <a target="_self" href="http://web.archive.org/web/19961020013433/http:/www.linkexchange.com/">The Internet Link Exchange</a>.</p>
+<p><InterviewName fullName="Eric Ward" />I also got the chance to launch Link Exchange. Tony Hsieh hired me to launch the very first banner exchange program. <a target="_self" href="http://web.archive.org/web/19961020013433/http:/www.linkexchange.com/">The Internet Link Exchange</a>.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong>You're this client guy behind a lot of things.</p>
+<p><InterviewName fullName="Mark Knowles" />You're this client guy behind a lot of things.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong>Someone at The Wall Street Journal Online said I was “The Svengali behind the scenes of some of the web's most famous launches.” I like being behind the scenes. I didn't mind, because ultimately, I knew it wasn't me that was doing it. The content was what succeeded. I've always believed that.</p>
+<p><InterviewName fullName="Eric Ward" />Someone at The Wall Street Journal Online said I was “The Svengali behind the scenes of some of the web's most famous launches.” I like being behind the scenes. I didn't mind, because ultimately, I knew it wasn't me that was doing it. The content was what succeeded. I've always believed that.</p>
 
 <p>Today when people ask, "How many links can you get us? "I say, "I can't get you any. Your content will either inspire others to link to it, or they won't. I can help speed that process, but ultimately, it doesn't matter. If you don't have the goods, you're not going to get the links."</p>
 
@@ -109,10 +111,10 @@ metaKeywords:
 
 <p>Sometimes I wish I had a little more business sense and didn't always view growth as bad. Just because you grow, doesn't mean you have to lose quality. That was always my greatest fear. </p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong> Right, right.</p>
+<p><InterviewName fullName="Mark Knowles" />Right, right.</p>
 
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> So that’s my story.</p>
+<p><InterviewName fullName="Eric Ward" />So that’s my story.</p>
 
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong>  It was very good and there's a whole lot of depth to your history. Any final thoughts?</p>
-<p><strong><abbr title="Eric Ward">ERIC:</abbr></strong> I've just launched a linking strategies newsletter called <a target="_self" href="http://www.ericward.com/linkmosesprivate.html">LinkMoses Private</a>, to help people improve and sculpt a more effective inbound link profile. Each issue contains high quality and natural Link Opportunity Alerts, linking strategies, Q/A, linking case studies, news and tactics.  But even as I continue to help others build the right kind of links, I am amazed at how people overlook the power of their own sites to help improve the rank of pages. Once you have established yourself as credible and trustworthy via external links pointing to your site, Google trusts you. And if Google trusts you, they will very likely trust what you say about yourself and what you link to.</p>
-<p><strong><abbr title="Mark Knowles">MARK:</abbr></strong>What a great point to close our discussion with. Thanks.</p>
+<p><InterviewName fullName="Mark Knowles" /> It was very good and there's a whole lot of depth to your history. Any final thoughts?</p>
+<p><InterviewName fullName="Eric Ward" />I've just launched a linking strategies newsletter called <a target="_self" href="http://www.ericward.com/linkmosesprivate.html">LinkMoses Private</a>, to help people improve and sculpt a more effective inbound link profile. Each issue contains high quality and natural Link Opportunity Alerts, linking strategies, Q/A, linking case studies, news and tactics.  But even as I continue to help others build the right kind of links, I am amazed at how people overlook the power of their own sites to help improve the rank of pages. Once you have established yourself as credible and trustworthy via external links pointing to your site, Google trusts you. And if Google trusts you, they will very likely trust what you say about yourself and what you link to.</p>
+<p><InterviewName fullName="Mark Knowles" />What a great point to close our discussion with. Thanks.</p>
