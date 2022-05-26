@@ -123,8 +123,10 @@ metaKeywords: The History of SEO, History of SEO, Search Engine Watch, Web Desig
 <p><InterviewName fullName="Brent Csutoras" />Well that’s what we’ve done with Fight Night. Fight Night is an SEO meet up where… </p>
 <p><InterviewName fullName="Chris Winfield" />It’s not the same thing… (Laughs) </p>
 <p><InterviewName fullName="Brent Csutoras" />Why? (Laughs) </p>
-<p><InterviewName fullName="Mark Knowles" />So what would you tell a new person starting out who somehow got drawn into search; and they want to do something… </p>
+<p><InterviewName fullName="Mark Knowles" />So what would you tell a new person starting out who somehow got drawn into search; and they want to do something...</p>
+
 <p><InterviewName fullName="Chris Winfield" />I would say differentiate yourself somehow. Again with as many blogs as there are out there it seems like there are that many SEOs. So “How are you going to be different? What’s your thing?” And I would really recommend owning something; trying to be known for being that person, whatever it is. There are a lot of different verticals even within SEO. Even if there is someone already that’s “known” keyword research, that guy can only do so much, you could be that guy. Be a kick a** link builder. </p>
+
 <p><InterviewName fullName="Todd Malicoat" />And you’re guaranteed a speaking spot that way. </p>
 <p><InterviewName fullName="Brent Csutoras" />And if you become a kick a** link builder, email me, and I’ll hire you. </p>
 <p><InterviewName fullName="Todd Malicoat" />But that’s what I did with SEO Tools basically doing link development at Jim’s but it was just the right timing. Now you can’t do that because there are a million people talking about tools, and there are a million people talking about whatever else. You pick something specific. Another one that started that actually and I think he’s doing pretty good with it is Brian Mark. I had actually told him this repeatedly. He had beat up the One Box over and over, and I’m like, “Dude, that’s awesome information, you know all about this.” </p>
