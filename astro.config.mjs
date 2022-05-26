@@ -10,6 +10,5 @@ const site = process.env.CI_ENVIRONMENT_URL ?? 'http://localhost:3000'; // Full 
 export default defineConfig({
   site: site,
   trailingSlash: 'always',
-  integrations: [sitemap()],
-  markdown: { mode: 'mdx' }
+  integrations: [sitemap()]
 });
