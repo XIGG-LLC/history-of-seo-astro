@@ -43,7 +43,9 @@ const descriptionText = item.frontmatter.mediumdescription ?? item.frontmatter.d
 
         <div>
             {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
-                <InterviewThumbnail src={item.frontmatter.thumbnail} />
+                <InterviewThumbnail 
+                    src={item.frontmatter.thumbnail}
+                    altText={`Thumbnail photo of ${item.frontmatter.title}`} />
             )}
             <div set:html={descriptionText}></div>
             
