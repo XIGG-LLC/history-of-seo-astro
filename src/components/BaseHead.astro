@@ -22,7 +22,7 @@ const { title, description, keywords, showCanonical, showOpenGraphTags } = Astro
 		<meta name="keywords" content={keywords ?? ''} />
 	)}
 	{showCanonical && (
-        <link rel="canonical" href={Astro.canonicalURL} />
+        <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 	)}
     
     {showOpenGraphTags && (
