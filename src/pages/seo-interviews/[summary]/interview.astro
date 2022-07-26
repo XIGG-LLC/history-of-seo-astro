@@ -44,7 +44,9 @@ const propsObj = {
         
         <div>
             {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
-                <InterviewThumbnail src={item.frontmatter.thumbnail} />
+                <InterviewThumbnail 
+                    src={item.frontmatter.thumbnail} 
+                    altText={`Thumbnail photo of ${item.frontmatter.title}`} />
             )}
             
             <item.Content />

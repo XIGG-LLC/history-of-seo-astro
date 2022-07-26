@@ -1,5 +1,5 @@
 ---
-const { src, altText, extraCss, width, height } = Astro.props;
+const { src, altText, title, extraCss, width, height } = Astro.props;
 const cssClass = `${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
 
 const imgName = `/assets/${src}`;
@@ -12,5 +12,5 @@ const imgName = `/assets/${src}`;
     width={width} 
     height={height} 
     alt={altText ?? ''}
-    title={altText ?? ''} />
+    title={title ?? ''} />
 )}
