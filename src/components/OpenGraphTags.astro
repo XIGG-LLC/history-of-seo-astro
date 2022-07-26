@@ -22,7 +22,7 @@ for (let i = 0; i < brandStrings.length; i += 1) {
 ---
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.canonicalURL} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={description ?? ogTitle} />
     <meta property="og:image" content="/favicon.ico" />
