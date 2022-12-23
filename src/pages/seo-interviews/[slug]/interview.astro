@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
+
+export async function getStaticPaths() {
+    let data = await Astro.glob('../../../data/interviews/*.md');
+    
+    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
+        return {
+            params: { slug: item.frontmatter.slug },
+            props: { item }
+        }
+    });
+}
+
+const { item } = Astro.props;
+const title = item.frontmatter.SummaryPageTitle;
+const propsObj = {
+	title: `Interview with ${item.frontmatter.title} | The History of SEO`,
+    metaDescription: item.frontmatter.metaDescription ?? '',
+    metaKeywords: item.frontmatter.metaKeywords ?? '',
+    breadBrumbPaths: [
+        {name: 'The Interviews', path: 'seo-interviews/'},
+        {name: item.frontmatter.title, path: `${item.frontmatter.slug}/`},
+        {name: 'Interview', path: 'interview/'}
+    ]
+}
+---
+<style>
+.back {
+    padding-top: 2rem;
+}
+.thumbnail {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+</style>
+<BaseLayout setup={propsObj} title={title}>
+    <article>
+    
+        <header>
+            <h1>Interview with {item.frontmatter.title}</h1>
+        </header>
+        
+        <div>
+            {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
+                <InterviewThumbnail 
+                    src={item.frontmatter.thumbnail} 
+                    altText={`Thumbnail photo of ${item.frontmatter.title}`} />
+            )}
+            
+            <item.Content />
+
+            <a href="/seo-interviews/" class="btn btn-primary m-block-start-3">Back to Interviews</a>
+        </div>
+
+    </article>
+</BaseLayout>

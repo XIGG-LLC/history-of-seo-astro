@@ -1,58 +1,60 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ActionButton from '../../../components/ActionButton.astro';
 import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
     let data = await Astro.glob('../../../data/interviews/*.md');
     
     return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
         return {
-            params: { summary: item.frontmatter.slug },
+            params: {slug: item.frontmatter.slug },
             props: { item }
         }
     });
 }
 
 const { item } = Astro.props;
-const title = item.frontmatter.SummaryPageTitle;
+const title = item.frontmatter.title;
 const propsObj = {
-	title: `Interview with ${item.frontmatter.title} | The History of SEO`,
-    metaDescription: item.frontmatter.metaDescription ?? '',
-    metaKeywords: item.frontmatter.metaKeywords ?? '',
+	title: `Summary of Interview with ${item.frontmatter.title}`,
+    metaDescription: item.frontmatter.summaryMetaDescription ?? '',
+    metaKeywords: item.frontmatter.summaryMetaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
-        {name: item.frontmatter.title, path: `${item.frontmatter.slug}/`},
-        {name: 'Interview', path: 'interview/'}
+        {name: item.frontmatter.title, path: ``}
     ]
 }
+
+const descriptionText = item.frontmatter.mediumdescription ?? item.frontmatter.description;
+
 ---
 <style>
 .back {
     padding-top: 2rem;
-}
-.thumbnail {
-    float: left;
-    margin: 0 1rem 1rem 0;
 }
 </style>
 <BaseLayout setup={propsObj} title={title}>
     <article>
     
         <header>
-            <h1>Interview with {item.frontmatter.title}</h1>
+            <h1>{item.frontmatter.title}</h1>
         </header>
-        
+
         <div>
             {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
                 <InterviewThumbnail 
-                    src={item.frontmatter.thumbnail} 
+                    src={item.frontmatter.thumbnail}
                     altText={`Thumbnail photo of ${item.frontmatter.title}`} />
             )}
+            <div set:html={descriptionText}></div>
             
-            <item.Content />
-
-            <a href="/seo-interviews/" class="btn btn-primary m-block-start-3">Back to Interviews</a>
         </div>
+
+        <ActionButton 
+            link={`/seo-interviews/${item.frontmatter.slug}/interview/`}
+            extraCss="mb-2"
+            altText="Read the entire interview">interview</ActionButton>
 
     </article>
 </BaseLayout>
