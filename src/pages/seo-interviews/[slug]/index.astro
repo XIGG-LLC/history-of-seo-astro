@@ -4,7 +4,7 @@ import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-    let data = await Astro.glob('../../../data/interviews/*.md');
+    let data = await Astro.glob('../../../data/interviews/*.mdx');
     
     return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
         return {
@@ -18,8 +18,8 @@ const { item } = Astro.props;
 const title = item.frontmatter.title;
 const propsObj = {
 	title: `Summary of Interview with ${item.frontmatter.title}`,
-    metaDescription: item.frontmatter.summaryMetaDescription ?? '',
-    metaKeywords: item.frontmatter.summaryMetaKeywords ?? '',
+    description: item.frontmatter.summaryMetaDescription ?? '',
+    keywords: item.frontmatter.summaryMetaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
         {name: item.frontmatter.title, path: ``}

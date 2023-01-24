@@ -7,7 +7,7 @@ const propsObj = {
     breadBrumbPaths: [{name: 'The Industry', path: 'the-industry/'}]
 }
 
-let data = await Astro.glob('../../data/industry-articles/*.md');
+let data = await Astro.glob('../../data/industry-articles/*.mdx');
 
 // Sort by 'sortorder' field
 if (data.length) {
