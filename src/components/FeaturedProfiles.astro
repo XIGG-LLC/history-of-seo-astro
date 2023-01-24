@@ -2,7 +2,7 @@
 import ActionButton from '../components/ActionButton.astro';
 import InterviewThumbnail from '../components/InterviewThumbnail.astro';
 
-let data = await Astro.glob('../data/interviews/*.md');
+let data = await Astro.glob('../data/interviews/*.mdx');
 
 // Sort by 'sortorder' field
 if (data.length) {

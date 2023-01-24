@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-    let data = await Astro.glob('../../data/industry-articles/*.md');
+    let data = await Astro.glob('../../data/industry-articles/*.mdx');
     
     return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
         return {
@@ -16,8 +16,8 @@ const { item } = Astro.props;
 const title = item.frontmatter.title;
 const propsObj = {
 	title: item.frontmatter.title,
-    metaDescription: item.frontmatter.metaDescription ?? '',
-    metaKeywords: item.frontmatter.metaKeywords ?? '',
+    description: item.frontmatter.metaDescription ?? '',
+    keywords: item.frontmatter.metaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Industry', path: 'the-industry/'},
         {name: item.frontmatter.title, path: 'detail'}

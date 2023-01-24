@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Interview Data
-let interviewData = await Astro.glob('../data/interviews/*.md');
+let interviewData = await Astro.glob('../data/interviews/*.mdx');
 // Sort by 'sortorder' field
 if (interviewData.length) {
     interviewData = interviewData.sort((a, b) => {
@@ -11,7 +11,7 @@ if (interviewData.length) {
 }
 
 // Industry Data
-let industryData = await Astro.glob('../data/industry-articles/*.md');
+let industryData = await Astro.glob('../data/industry-articles/*.mdx');
 
 // Sort by 'sortorder' field
 if (industryData.length) {
