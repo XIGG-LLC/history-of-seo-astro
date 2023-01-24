@@ -28,3 +28,5 @@ const { title, description, keywords, showCanonical, showOpenGraphTags } = Astro
     {showOpenGraphTags && (
         <OpenGraphTags title={title} description={description} />
     )}
+
+    <meta name="generator" content={Astro.generator} />
