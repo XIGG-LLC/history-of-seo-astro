@@ -1,5 +1,16 @@
 ---
-const { link, altText, extraCss } = Astro.props;
+export interface Props {
+    link: string;
+    altText?: string;
+    extraCss?: string;
+    ariaLabel?: string;
+}
+const { 
+    link, 
+    altText, 
+    extraCss,
+    ariaLabel
+} = Astro.props;
 const cssClass = `action-button${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
 ---
 <style lang="scss">
@@ -19,7 +30,7 @@ const cssClass = `action-button${(extraCss !== undefined) ? ` ${extraCss}` : ''}
         }
     }
 </style>
-<a href={link} class={cssClass}>
+<a href={link} class={cssClass} aria-label={ariaLabel}>
     <img 
         src="/assets/theme/action-button.png" 
         width="24" 

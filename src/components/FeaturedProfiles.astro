@@ -12,7 +12,7 @@ if (data.length) {
 }
 ---
 <style lang="scss">
-    .homeProfile {
+    article {
         margin-block: 1rem;
         padding-block: 1rem;
         border-bottom: solid 1px #ddd;
@@ -21,16 +21,18 @@ if (data.length) {
         }
     }
     @media only screen and (min-width: 992px) {
-        .homeProfile {
+        article {
             display: flex;
             gap: 1rem;
         }
     }
 </style>
+<section aria-labelledby="featuredProfilesHeading">
+    <h2 class="m-block-start-6 m-block-end-0" id="featuredProfilesHeading">Featured Profiles</h2>
+
 {data && data.map(profile => (
-    
-    <div class="homeProfile">
-        <InterviewThumbnail src={profile.frontmatter.thumbnail} />
+    <article>
+        <InterviewThumbnail src={profile.frontmatter.thumbnail} altText={`Thumbnail photo of ${profile.frontmatter.title}`} />
         <div>
             <h3><a href={`/seo-interviews/${profile.frontmatter.slug}/`}>{profile.frontmatter.title}</a></h3>
             <Fragment set:html={profile.frontmatter.featureddescription}></Fragment>
@@ -39,13 +41,17 @@ if (data.length) {
                 <ActionButton 
                     link={`/seo-interviews/${profile.frontmatter.slug}/`}
                     extraCss="mb-2"
+                    ariaLabel={`Summary of the interview with ${profile.frontmatter.title}`}
                     altText="Read the summary">summary</ActionButton>
 
                 <ActionButton 
                     link={`/seo-interviews/${profile.frontmatter.slug}/interview/`}
                     extraCss="mb-2"
+                    ariaLabel={`Full interview with ${profile.frontmatter.title}`}
                     altText="Read the entire interview">interview</ActionButton>
             </div>
         </div>
-    </div>
+    </article>
 ))}
+
+</section>

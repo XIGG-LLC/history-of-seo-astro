@@ -1,5 +1,4 @@
 ---
-import ActionButton from '../components/ActionButton.astro';
 import Image from '../components/Image.astro';
 import FeaturedProfiles from '../components/FeaturedProfiles.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -8,19 +7,17 @@ const propsObj = {
 }
 ---
 <BaseLayout setup={propsObj}>
-	<div>
-		<h1>The History of SEO: People</h1>
+	<section aria-labelledby="mainSectionHeading">
+		<h1 id="mainSectionHeading">The History of SEO: People</h1>
 		<p>From the early 1990's, website owners woke up to the idea that having highly visible sites in search engines brought valuable business results.&nbsp; In tandem, the idea of gaining higher rank that brought higher visibility could drive increased traffic. These connections dawned the industry of SEO.&nbsp; <a href="/seo-interviews/">Meet the early birds and how it all began…</a></p>
+	</section>
 
-		<div>
-			<Image src="content/bruce-clay-honored-at-bend-webcam.jpg" altText="Bruce Clay Honored at Bend Webcam" width="217" height="164" extraCss="pull-left" />
-			<h2>Bruce Clay Receives Lifetime Achievement Award</h2>
-			<p>During last years <a href="https://www.swivelnow.com/" target="_blank">Swivel Digital Marketing conference</a>, Bruce was nicely surprised. Event co-chair, CEO of Pixelsilk, and founder of the History of SEO, Mark Knowles presented the legendary SEO pioneer with a Lifetime Achievement Award for his significant voice and service to the industry. Bruce now joins John Audette and Danny Sullivan, who have also been honored for giving birth and authority to SEO.</p>
-		</div>
-		
-		<h2 class="m-block-start-6 m-block-end-0">Featured Profiles</h2>
+	<section aria-labelledby="bruceClayAward">
+		<Image src="content/bruce-clay-honored-at-bend-webcam.jpg" altText="Bruce Clay Honored at Bend Webcam" width="217" height="164" extraCss="pull-left" />
+		<h2 id="bruceClayAward">Bruce Clay Receives Lifetime Achievement Award</h2>
+		<p>During last years <a href="https://www.swivelnow.com/" target="_blank">Swivel Digital Marketing conference</a>, Bruce was nicely surprised. Event co-chair, CEO of Pixelsilk, and founder of the History of SEO, Mark Knowles presented the legendary SEO pioneer with a Lifetime Achievement Award for his significant voice and service to the industry. Bruce now joins John Audette and Danny Sullivan, who have also been honored for giving birth and authority to SEO.</p>
+	</section>
+	
+	<FeaturedProfiles />
 
-		<FeaturedProfiles />
-		
-	</div>
 </BaseLayout>

@@ -43,10 +43,12 @@ if (data.length) {
                 <ActionButton 
                     link={`/seo-interviews/${item.frontmatter.slug}/`}
                     extraCss="m-block-end-2"
+                    ariaLabel={`Summary of the interview with ${item.frontmatter.title}`}
                     altText="Read the interview summary">summary</ActionButton>
                 <ActionButton 
                     link={`/seo-interviews/${item.frontmatter.slug}/interview/`}
                     extraCss="m-block-end-2"
+                    ariaLabel={`Full interview with ${item.frontmatter.title}`}
                     altText="Read the entire interview">interview</ActionButton>
             </div>
         </article>

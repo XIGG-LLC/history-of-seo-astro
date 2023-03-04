@@ -54,6 +54,7 @@ const descriptionText = item.frontmatter.mediumdescription ?? item.frontmatter.d
         <ActionButton 
             link={`/seo-interviews/${item.frontmatter.slug}/interview/`}
             extraCss="mb-2"
+            ariaLabel={`Full interview with ${item.frontmatter.title}`}
             altText="Read the entire interview">interview</ActionButton>
 
     </article>
