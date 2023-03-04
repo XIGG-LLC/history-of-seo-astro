@@ -84,8 +84,28 @@ function isCurrentParent(url) {
                 display: block;
                 font-size: 2rem;
                 padding: 1rem;
-                &.current {
-                    font-weight: bold;
+                position: relative;
+                text-decoration: none;
+                &[aria-current="page"] {
+                    background-color: rgba(255,255,255,0.1);
+                    &::after {
+                        display: block;
+                    }
+                }
+                &::after {
+                    --triangle-size: 20px;
+                    --triangle-color: #fff;
+                    display: none;
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 5%;
+                    transform: translateY(-50%);
+                    width: 0;
+                    height: 0;
+                    border-bottom: solid var(--triangle-size) transparent;
+                    border-top: solid var(--triangle-size) transparent;
+                    border-left: solid var(--triangle-size) var(--triangle-color);
                 }
             }
         }
@@ -116,8 +136,11 @@ function isCurrentParent(url) {
                 padding: 0.5rem;
                 position: relative;
                 text-decoration: none;
-                &.current {
-                    font-weight: bold;
+                &[aria-current="page"] {
+                    //font-weight: bold;
+                    &::after {
+                        display: block;
+                    }
                 }
                 &::after {
                     --triangle-size: 8px;
@@ -153,7 +176,7 @@ function isCurrentParent(url) {
     <nav aria-expanded="false">
         <ul>
         {menuItems && menuItems.map(menu => (
-            <li><a class={isCurrentParent(menu.url) ? 'current' : ''} href={`${menu.url}${(menu.url !== '/' ? '/' : '')}`}>{menu.name}</a></li>
+            <li><a aria-current={isCurrentParent(menu.url) ? 'page' : false} href={`${menu.url}${(menu.url !== '/' ? '/' : '')}`}>{menu.name}</a></li>
         ))}
         </ul>
     </nav>
