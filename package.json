@@ -10,10 +10,11 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^1.1.0",
-    "astro": "^2.0.15",
+    "astro": "^2.1.0",
     "sass": "^1.58.3"
   },
   "dependencies": {
+    "@astrojs/image": "^0.16.0",
     "@astrojs/markdown-component": "^1.0.2",
     "@astrojs/mdx": "^0.17.2",
     "qs": "^6.11.0"
