@@ -1,7 +1,8 @@
 ---
-import Image from '../components/Image.astro';
+import { Image } from '@astrojs/image/components';
 import FeaturedProfiles from '../components/FeaturedProfiles.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
 const propsObj = {
 	title: 'The History of SEO -- People in Search Engine Optimization'
 }
@@ -13,7 +14,7 @@ const propsObj = {
 	</section>
 
 	<section aria-labelledby="bruceClayAward">
-		<Image src="content/bruce-clay-honored-at-bend-webcam.jpg" altText="Bruce Clay Honored at Bend Webcam" width="217" height="164" extraCss="pull-left" />
+		<Image src={import('../../public/assets/content/bruce-clay-honored-at-bend-webcam.jpg')} alt="Bruce Clay Honored at Bend Webcam" width={217} height={164} class="pull-left" />
 		<h2 id="bruceClayAward">Bruce Clay Receives Lifetime Achievement Award</h2>
 		<p>During last years <a href="https://www.swivelnow.com/" target="_blank">Swivel Digital Marketing conference</a>, Bruce was nicely surprised. Event co-chair, CEO of Pixelsilk, and founder of the History of SEO, Mark Knowles presented the legendary SEO pioneer with a Lifetime Achievement Award for his significant voice and service to the industry. Bruce now joins John Audette and Danny Sullivan, who have also been honored for giving birth and authority to SEO.</p>
 	</section>
