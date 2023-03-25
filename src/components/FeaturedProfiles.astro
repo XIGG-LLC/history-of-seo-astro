@@ -1,13 +1,14 @@
 ---
 import ActionButton from '../components/ActionButton.astro';
 import InterviewThumbnail from '../components/InterviewThumbnail.astro';
+import { getCollection } from 'astro:content';
 
-let data = await Astro.glob('../data/interviews/*.mdx');
+let data = await getCollection('interviews');
 
 // Sort by 'sortorder' field
 if (data.length) {
-    data = data.filter(d => d.frontmatter.featuredsort !== 0).sort((a, b) => {
-        return (a.frontmatter.featuredsort < b.frontmatter.featuredsort) ? -1 : 1;
+    data = data.filter(d => d.data.featuredsort !== 0).sort((a, b) => {
+        return (a.data.featuredsort < b.data.featuredsort) ? -1 : 1;
     });
 }
 ---
@@ -32,22 +33,22 @@ if (data.length) {
 
 {data && data.map(profile => (
     <article>
-        <InterviewThumbnail src={profile.frontmatter.thumbnail} altText={`Thumbnail photo of ${profile.frontmatter.title}`} />
+        <InterviewThumbnail src={profile.data.thumbnail} altText={`Thumbnail photo of ${profile.data.title}`} />
         <div>
-            <h3><a href={`/seo-interviews/${profile.frontmatter.slug}/`}>{profile.frontmatter.title}</a></h3>
-            <Fragment set:html={profile.frontmatter.featureddescription}></Fragment>
+            <h3><a href={`/seo-interviews/${profile.slug}/`}>{profile.data.title}</a></h3>
+            <Fragment set:html={profile.data.featureddescription}></Fragment>
         
             <div>
                 <ActionButton 
-                    link={`/seo-interviews/${profile.frontmatter.slug}/`}
+                    link={`/seo-interviews/${profile.slug}/`}
                     extraCss="mb-2"
-                    ariaLabel={`Summary of the interview with ${profile.frontmatter.title}`}
+                    ariaLabel={`Summary of the interview with ${profile.data.title}`}
                     altText="Read the summary">summary</ActionButton>
 
                 <ActionButton 
-                    link={`/seo-interviews/${profile.frontmatter.slug}/interview/`}
+                    link={`/seo-interviews/${profile.slug}/interview/`}
                     extraCss="mb-2"
-                    ariaLabel={`Full interview with ${profile.frontmatter.title}`}
+                    ariaLabel={`Full interview with ${profile.data.title}`}
                     altText="Read the entire interview">interview</ActionButton>
             </div>
         </div>

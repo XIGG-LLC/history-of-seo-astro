@@ -1,37 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    let data = await Astro.glob('../../data/industry-articles/*.mdx');
-    
-    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
-        return {
-            params: {slug: item.frontmatter.slug },
-            props: { item }
-        }
-    });
+    let data = await getCollection('articles');
+    return data.filter(d => d.data.sortOrder !== 0).map(item => ({
+        params: { slug: item.slug }, props: { item }
+     }) )
 }
 
 const { item } = Astro.props;
-const title = item.frontmatter.title;
+const { Content } = await item.render();
+
 const propsObj = {
-	title: item.frontmatter.title,
-    description: item.frontmatter.metaDescription ?? '',
-    keywords: item.frontmatter.metaKeywords ?? '',
+	title: item.data.title,
+    description: item.data.metaDescription ?? '',
+    keywords: item.data.metaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Industry', path: 'the-industry/'},
-        {name: item.frontmatter.title, path: 'detail'}
+        {name: item.data.title, path: 'detail'}
     ]
 }
 
 ---
-<BaseLayout setup={propsObj} title={title}>
+<BaseLayout setup={propsObj} title={item.data.title}>
     <article>
         <header>
-            <h1>{item.frontmatter.title}</h1>
+            <h1>{item.data.title}</h1>
         </header>
 
-        <item.Content />
+        <Content />
         
         <a href="/the-industry/" class="btn btn-primary m-block-start-3">Back to Articles</a>
 
