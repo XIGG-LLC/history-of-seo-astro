@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
 const propsObj = {
 	title: 'The History of Search Engine Optimization &#8211; Articles on the Industry of SEO',
     metaDescription: 'Articles on the SEO industry including the birth and basics of search engines and differences between SEO, SEM, and Internet marketing.',
@@ -7,21 +9,21 @@ const propsObj = {
     breadBrumbPaths: [{name: 'The Industry', path: 'the-industry/'}]
 }
 
-let data = await Astro.glob('../../data/industry-articles/*.mdx');
+let data = await getCollection('articles');
 
 // Sort by 'sortorder' field
 if (data.length) {
     data = data.sort((a, b) => {
-        return (a.frontmatter.sortorder < b.frontmatter.sortorder) ? -1 : 1;
-    }).filter(d => d.frontmatter.sortorder !== 0);
+        return (a.data.sortOrder < b.data.sortOrder) ? -1 : 1;
+    }).filter(d => d.data.sortOrder !== 0);
 }
 
 ---
 <BaseLayout setup={propsObj}>
     {data && data.map(item => (
         <article>
-            <h2 ><a href={`/the-industry/${item.frontmatter.slug}/`}>{item.frontmatter.title}</a></h2>
-            <div set:html={item.frontmatter.description}></div>
+            <h2 ><a href={`/the-industry/${item.slug}/`}>{item.data.title}</a></h2>
+            <div set:html={item.data.description}></div>
         </article>
     ))}
 </BaseLayout>

@@ -1,27 +1,29 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    let data = await Astro.glob('../../../data/interviews/*.mdx');
+    let data = await getCollection('interviews');
     
-    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
+    return data.filter(d => d.data.sortOrder !== 0).map(item => {
         return {
-            params: { slug: item.frontmatter.slug },
+            params: { slug: item.slug },
             props: { item }
         }
     });
 }
 
 const { item } = Astro.props;
-const title = item.frontmatter.SummaryPageTitle;
+const { Content } = await item.render();
+const title = item.data.SummaryPageTitle;
 const propsObj = {
-	title: `Interview with ${item.frontmatter.title} | The History of SEO`,
-    description: item.frontmatter.metaDescription ?? '',
-    keywords: item.frontmatter.metaKeywords ?? '',
+	title: `Interview with ${item.data.title} | The History of SEO`,
+    description: item.data.metaDescription ?? '',
+    keywords: item.data.metaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
-        {name: item.frontmatter.title, path: `${item.frontmatter.slug}/`},
+        {name: item.data.title, path: `${item.slug}/`},
         {name: 'Interview', path: 'interview/'}
     ]
 }
@@ -39,17 +41,17 @@ const propsObj = {
     <article>
     
         <header>
-            <h1>Interview with {item.frontmatter.title}</h1>
+            <h1>Interview with {item.data.title}</h1>
         </header>
         
         <div>
-            {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
+            {item.data.thumbnail && item.data.thumbnail !== '' && (
                 <InterviewThumbnail 
-                    src={item.frontmatter.thumbnail} 
-                    altText={`Thumbnail photo of ${item.frontmatter.title}`} />
+                    src={item.data.thumbnail} 
+                    altText={`Thumbnail photo of ${item.data.title}`} />
             )}
             
-            <item.Content />
+            <Content />
 
             <a href="/seo-interviews/" class="btn btn-primary m-block-start-3">Back to Interviews</a>
         </div>

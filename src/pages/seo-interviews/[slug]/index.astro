@@ -2,31 +2,30 @@
 import ActionButton from '../../../components/ActionButton.astro';
 import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    let data = await Astro.glob('../../../data/interviews/*.mdx');
+    let data = await getCollection('interviews');
     
-    return data.filter(d => d.frontmatter.sortorder !== 0).map(item => {
-        return {
-            params: {slug: item.frontmatter.slug },
-            props: { item }
-        }
-    });
+    return data.filter(d => d.data.sortOrder !== 0).map(item => ({
+        params: {slug: item.slug }, props: { item }
+        
+    }));
 }
 
 const { item } = Astro.props;
-const title = item.frontmatter.title;
+const title = item.data.title;
 const propsObj = {
-	title: `Summary of Interview with ${item.frontmatter.title}`,
-    description: item.frontmatter.summaryMetaDescription ?? '',
-    keywords: item.frontmatter.summaryMetaKeywords ?? '',
+	title: `Summary of Interview with ${item.data.title}`,
+    description: item.data.summaryMetaDescription ?? '',
+    keywords: item.data.summaryMetaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
-        {name: item.frontmatter.title, path: ``}
+        {name: item.data.title, path: ``}
     ]
 }
 
-const descriptionText = item.frontmatter.mediumdescription ?? item.frontmatter.description;
+const descriptionText = item.data.mediumdescription ?? item.data.description;
 
 ---
 <style>
@@ -38,23 +37,23 @@ const descriptionText = item.frontmatter.mediumdescription ?? item.frontmatter.d
     <article>
     
         <header>
-            <h1>{item.frontmatter.title}</h1>
+            <h1>{item.data.title}</h1>
         </header>
 
         <div>
-            {item.frontmatter.thumbnail && item.frontmatter.thumbnail !== '' && (
+            {item.data.thumbnail && item.data.thumbnail !== '' && (
                 <InterviewThumbnail 
-                    src={item.frontmatter.thumbnail}
-                    altText={`Thumbnail photo of ${item.frontmatter.title}`} />
+                    src={item.data.thumbnail}
+                    altText={`Thumbnail photo of ${item.data.title}`} />
             )}
             <div set:html={descriptionText}></div>
             
         </div>
 
         <ActionButton 
-            link={`/seo-interviews/${item.frontmatter.slug}/interview/`}
+            link={`/seo-interviews/${item.slug}/interview/`}
             extraCss="mb-2"
-            ariaLabel={`Full interview with ${item.frontmatter.title}`}
+            ariaLabel={`Full interview with ${item.data.title}`}
             altText="Read the entire interview">interview</ActionButton>
 
     </article>

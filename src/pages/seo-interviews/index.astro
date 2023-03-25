@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ActionButton from '../../components/ActionButton.astro';
+import { getCollection } from 'astro:content';
+
 const propsObj = {
 	title: 'The SEO Interviews – People in the History of Search Engine Optimization',
     metaDescription: 'The SEO Interviews indexes historic profiles involved in the dawning of the Search Engine Optimization industry.',
@@ -8,13 +10,13 @@ const propsObj = {
     breadBrumbPaths: [{name: 'The Interviews', path: 'seo-interviews/'}]
 }
 
-let data = await Astro.glob('../../data/interviews/*.mdx');
+let data = await getCollection('interviews');
 
 // Sort by 'sortorder' field
 if (data.length) {
     data = data.sort((a, b) => {
-        return (a.frontmatter.sortorder < b.frontmatter.sortorder) ? -1 : 1;
-    }).filter(d => d.frontmatter.sortorder !== 0);
+        return (a.data.sortOrder < b.data.sortOrder) ? -1 : 1;
+    }).filter(d => d.data.sortOrder !== 0);
 }
 
 ---
@@ -36,19 +38,19 @@ if (data.length) {
     {data && data.map(item => (
         <article class="interview-item">
             <header>
-                <h2><a href={`/seo-interviews/${item.frontmatter.slug}/interview/`}>{item.frontmatter.title}</a></h2>
+                <h2><a href={`/seo-interviews/${item.slug}/interview/`}>{item.data.title}</a></h2>
             </header>
-            <div class="description" set:html={item.frontmatter.description}></div>
+            <div class="description" set:html={item.data.description}></div>
             <div class="links">
                 <ActionButton 
-                    link={`/seo-interviews/${item.frontmatter.slug}/`}
+                    link={`/seo-interviews/${item.slug}/`}
                     extraCss="m-block-end-2"
-                    ariaLabel={`Summary of the interview with ${item.frontmatter.title}`}
+                    ariaLabel={`Summary of the interview with ${item.data.title}`}
                     altText="Read the interview summary">summary</ActionButton>
                 <ActionButton 
-                    link={`/seo-interviews/${item.frontmatter.slug}/interview/`}
+                    link={`/seo-interviews/${item.slug}/interview/`}
                     extraCss="m-block-end-2"
-                    ariaLabel={`Full interview with ${item.frontmatter.title}`}
+                    ariaLabel={`Full interview with ${item.data.title}`}
                     altText="Read the entire interview">interview</ActionButton>
             </div>
         </article>
