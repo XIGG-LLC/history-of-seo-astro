@@ -1,4 +1,5 @@
 ---
+import { Picture } from "@astrojs/image/components";
 const { src, altText, title, extraCss } = Astro.props;
 const cssClass = `thumbnail${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
 const imgName = `/assets/interviewees/${src}`;
@@ -10,10 +11,14 @@ const imgName = `/assets/interviewees/${src}`;
         margin: 0 1rem 1rem 0;
     }
 </style>
-    <img 
-        class={cssClass}
-        src={imgName} 
-        width="100" 
-        height="100" 
-        alt={altText ?? ''}
-        title={title ?? ''} />
+
+<Picture 
+    class={cssClass} 
+    src={imgName} 
+    widths={[100]} 
+    aspectRatio={1} 
+    width={100} 
+    height={100} 
+    format={'jpg'} 
+    alt={altText ?? ''} 
+    />
