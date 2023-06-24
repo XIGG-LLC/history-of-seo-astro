@@ -28,7 +28,7 @@ header.main {
         min-height: 120px;
         &::after {
             content: "";
-            background-image: url('/assets/theme/history-timeline.jpg');
+            background-image: var(--bg-image);
             position: absolute;
             top:26px;
             //left: 50%;
