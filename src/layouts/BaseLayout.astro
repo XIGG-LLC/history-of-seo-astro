@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BreadCrumb from '../components/BreadCrumb.astro';
 import { Image } from '@astrojs/image/components';
+import { getImage } from '@astrojs/image';
 import Robots from '../components/Robots.astro';
 import BaseHead from '../components/BaseHead.astro';
 import '../styles/main.scss';
@@ -18,6 +19,22 @@ const url = new URL(Astro.request.url);
 const isHomePage = (url.pathname === '/') ? true : false;
 const showCanonicalLink = setup.showCanonical ?? true;
 const showOpenGraphTags = setup.showOpenGraphTags ?? true;
+
+const { src: genericSrc } = await getImage({
+	src: import('../images/theme/generic-graphic.jpg'),
+	alt: '',
+	quality: 50,
+	format: 'webp'
+});
+
+const { src: timelineSrc } = await getImage({
+	src: import('../images/theme/timeline-graphic-interim.jpg'),
+	alt: '',
+	quality: 75,
+	format: 'webp'
+});
+
+
 ---
 <html lang="en">
 
@@ -44,20 +61,20 @@ const showOpenGraphTags = setup.showOpenGraphTags ?? true;
 				</div>
 				<div class="col-2">
 					<div class="img-wrapper">
-						<Image 
-							src={import('../../public/assets/theme/generic-graphic.jpg')}
+						<img 
+							src={genericSrc}
 							alt="Image of people mingling at the Google booth at a conference" 
-							width={400} 
-							height={200} />
+							width="400" 
+							height="200" />
 					</div>
 					<div class="brown">
 						{isHomePage && (
 							<div class="left">
-								<Image 
-									src={import('../../public/assets/theme/timeline-graphic-interim.jpg')}
+								<img 
+									src={timelineSrc}
 									alt="Industry timeline graphic with company logos and years" 
-									width={190} 
-									height={410} />
+									width="190" 
+									height="410" />
 							</div>
 						)}
 						<div class="right"></div>
