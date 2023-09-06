@@ -3,20 +3,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ActionButton from '../../components/ActionButton.astro';
 import { getCollection } from 'astro:content';
 
-const propsObj = {
-	title: 'The SEO Interviews – People in the History of Search Engine Optimization',
-    metaDescription: 'The SEO Interviews indexes historic profiles involved in the dawning of the Search Engine Optimization industry.',
-    metaKeywords: 'Search Engine Optimization Interviews, SEO Interviews, Tony Adam, John Audette, Adam Audette, Greg Boser, Christine Churchill, Bruce Clay, Brent Csutoras, Todd Malicoat, Chris Winfield, Damien Finlay, Michael Gray, Jonathan Hochman, Bill Hunt, Andre Jensen, Detlev Johnson, Laura Lippay, Matt McGowan, Lee Odden, Jeremy Sanchez, Marshall Simmonds, Danny Sullivan, Adam Sussman, Shari Thurow, Dana Todd, Aaron Wall, Jill Whalen, Derrick Wheeler ',
-    breadBrumbPaths: [{name: 'The Interviews', path: 'seo-interviews/'}]
-}
-
 let data = await getCollection('interviews');
+
 
 // Sort by 'sortorder' field
 if (data.length) {
     data = data.sort((a, b) => {
         return (a.data.sortOrder < b.data.sortOrder) ? -1 : 1;
     }).filter(d => d.data.sortOrder !== 0);
+}
+
+const interviewNames = data.map(d => d.data.title);
+
+const propsObj = {
+	title: 'The SEO Interviews – People in the History of Search Engine Optimization',
+    description: 'The SEO Interviews indexes historic profiles involved in the dawning of the Search Engine Optimization industry.',
+    keywords: `Search Engine Optimization Interviews, SEO Interviews, ${interviewNames.join(', ')}`,
+    breadBrumbPaths: [{name: 'The Interviews', path: 'seo-interviews/'}]
 }
 
 ---

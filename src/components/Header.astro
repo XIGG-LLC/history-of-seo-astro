@@ -1,6 +1,6 @@
 ---
 import Navigation from './Navigation.astro';
-import { getImage } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 
 const { src } = await getImage({
 	src: import('../images/theme/history-timeline.jpg'),
