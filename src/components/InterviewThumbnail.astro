@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 const { src, altText, extraCss } = Astro.props;
 const cssClass = `thumbnail${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
 
@@ -11,10 +11,9 @@ const cssClass = `thumbnail${(extraCss !== undefined) ? ` ${extraCss}` : ''}`;
     }
 </style>
 
-<Picture 
+<Image 
     class={cssClass} 
     src={import(`../images/interviewees/${src.replace('.jpg', '')}.jpg`)} 
-    widths={[100]} 
     aspectRatio={1} 
     width={100} 
     height={100} 
