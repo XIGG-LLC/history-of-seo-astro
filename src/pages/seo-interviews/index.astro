@@ -3,9 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ActionButton from '../../components/ActionButton.astro';
 import { getCollection } from 'astro:content';
 
-const data = (await getCollection('interviews', ({ data }) => {
-    return data.sortOrder !== 0;
-})).sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf()); 
+const data = (await getCollection('interviews'))
+    .sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf()); 
 
 const interviewNames = data.map(d => d.data.title);
 

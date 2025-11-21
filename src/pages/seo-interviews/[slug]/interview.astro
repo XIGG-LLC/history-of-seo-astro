@@ -44,7 +44,7 @@ const propsObj = {
         </header>
         
         <div>
-            {item.data.thumbnail && item.data.thumbnail !== '' && (
+            {item.data.thumbnail && (
                 <InterviewThumbnail 
                     src={item.data.thumbnail} 
                     altText={`Thumbnail photo of ${item.data.title}`} />

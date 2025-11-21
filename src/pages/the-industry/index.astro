@@ -2,9 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const data = (await getCollection('articles', ({ data }) => {
-    return data.sortOrder !== 0;
-})).sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf());
+const data = (await getCollection('articles'))
+    .sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf());
 
 const propsObj = {
 	title: 'The History of Search Engine Optimization &#8211; Articles on the Industry of SEO',

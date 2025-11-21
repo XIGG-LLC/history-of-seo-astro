@@ -3,23 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 // Interview Data
-let interviewData = await getCollection('interviews');
-// Sort by 'sortorder' field
-if (interviewData.length) {
-    interviewData = interviewData.sort((a, b) => {
-        return (a.data.sortOrder < b.data.sortOrder) ? -1 : 1;
-    }).filter(d => d.data.sortOrder !== 0);
-}
+let interviewData = (await getCollection('interviews'))
+    .sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf());
 
 // Industry Data
-let industryData = await getCollection('articles');
-
-// Sort by 'sortorder' field
-if (industryData.length) {
-    industryData = industryData.sort((a, b) => {
-        return (a.data.sortOrder < b.data.sortOrder) ? -1 : 1;
-    }).filter(d => d.data.sortOrder !== 0);
-}
+let industryData = (await getCollection('articles'))
+    .sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf());
 
 const setup = {
     title: "Site Map",
