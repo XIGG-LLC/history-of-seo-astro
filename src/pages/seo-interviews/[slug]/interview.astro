@@ -1,29 +1,28 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import InterviewThumbnail from '../../../components/InterviewThumbnail.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
     let data = await getCollection('interviews');
     
     return data.filter(d => d.data.sortOrder !== 0).map(item => {
         return {
-            params: { slug: item.slug },
+            params: { slug: item.id },
             props: { item }
         }
     });
 }
 
 const { item } = Astro.props;
-const { Content } = await item.render();
-const title = item.data.SummaryPageTitle;
+const { Content } = await render(item);
 const propsObj = {
 	title: `Interview with ${item.data.title} | The History of SEO`,
     description: item.data.metaDescription ?? '',
     keywords: item.data.metaKeywords ?? '',
     breadBrumbPaths: [
         {name: 'The Interviews', path: 'seo-interviews/'},
-        {name: item.data.title, path: `${item.slug}/`},
+        {name: item.data.title, path: `${item.id}/`},
         {name: 'Interview', path: 'interview/'}
     ]
 }
@@ -37,7 +36,7 @@ const propsObj = {
     margin: 0 1rem 1rem 0;
 }
 </style>
-<BaseLayout setup={propsObj} title={title}>
+<BaseLayout setup={propsObj}>
     <article>
     
         <header>

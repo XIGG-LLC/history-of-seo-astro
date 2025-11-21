@@ -2,27 +2,21 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
+const data = (await getCollection('articles', ({ data }) => {
+    return data.sortOrder !== 0;
+})).sort((a, b) => a.data.sortOrder.valueOf() - b.data.sortOrder.valueOf());
+
 const propsObj = {
 	title: 'The History of Search Engine Optimization &#8211; Articles on the Industry of SEO',
     description: 'Articles on the SEO industry including the birth and basics of search engines and differences between SEO, SEM, and Internet marketing.',
     keywords: 'History of Search Engine Optimization, History of the Internet,  Development of Search Engines, History of SEO, First Search Engine, Search Engine Optimization, History of Search, SEM and Internet Marketing, World Wide Web, Search Engine Marketing, Search Engines, Search Engine, Internet Marketing, Engine Optimization, SEO Pioneers, Internet, SEM, SEO, Article',
     breadBrumbPaths: [{name: 'The Industry', path: 'the-industry/'}]
 }
-
-let data = await getCollection('articles');
-
-// Sort by 'sortorder' field
-if (data.length) {
-    data = data.sort((a, b) => {
-        return (a.data.sortOrder < b.data.sortOrder) ? -1 : 1;
-    }).filter(d => d.data.sortOrder !== 0);
-}
-
 ---
 <BaseLayout setup={propsObj}>
     {data && data.map(item => (
         <article>
-            <h2 ><a href={`/the-industry/${item.slug}/`}>{item.data.title}</a></h2>
+            <h2 ><a href={`/the-industry/${item.id}/`}>{item.data.title}</a></h2>
             <div set:html={item.data.description}></div>
         </article>
     ))}

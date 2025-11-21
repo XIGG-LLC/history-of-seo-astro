@@ -35,18 +35,18 @@ if (data.length) {
     <article>
         <InterviewThumbnail src={profile.data.thumbnail} altText={`Thumbnail photo of ${profile.data.title}`} />
         <div>
-            <h3><a href={`/seo-interviews/${profile.slug}/`}>{profile.data.title}</a></h3>
+            <h3><a href={`/seo-interviews/${profile.id}/`}>{profile.data.title}</a></h3>
             <Fragment set:html={profile.data.featureddescription}></Fragment>
         
             <div>
                 <ActionButton 
-                    link={`/seo-interviews/${profile.slug}/`}
+                    link={`/seo-interviews/${profile.id}/`}
                     extraCss="mb-2"
                     ariaLabel={`Summary of the interview with ${profile.data.title}`}
                     altText="Read the summary">summary</ActionButton>
 
                 <ActionButton 
-                    link={`/seo-interviews/${profile.slug}/interview/`}
+                    link={`/seo-interviews/${profile.id}/interview/`}
                     extraCss="mb-2"
                     ariaLabel={`Full interview with ${profile.data.title}`}
                     altText="Read the entire interview">interview</ActionButton>

@@ -36,9 +36,9 @@ const setup = {
             <ul>
                 {interviewData.map(page => (
                     <li>
-                        <a href={`/seo-interviews/${page.slug}/`}>{ page.data.title }</a>
+                        <a href={`/seo-interviews/${page.id}/`}>{ page.data.title }</a>
                         <ul>
-                            <li><a href={`/seo-interviews/${page.slug}/interview/`}>Interview</a></li>
+                            <li><a href={`/seo-interviews/${page.id}/interview/`}>Interview</a></li>
                         </ul>
                     </li>
                 ))}
@@ -50,7 +50,7 @@ const setup = {
             {industryData && (
             <ul>
                 {industryData.map(page => (
-                    <li><a href={`/the-industry/${page.slug}/`}>{ page.data.title }</a></li>
+                    <li><a href={`/the-industry/${page.id}/`}>{ page.data.title }</a></li>
                 ))}
             </ul>
             )}

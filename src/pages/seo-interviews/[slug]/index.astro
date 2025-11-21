@@ -8,13 +8,12 @@ export async function getStaticPaths() {
     let data = await getCollection('interviews');
     
     return data.filter(d => d.data.sortOrder !== 0).map(item => ({
-        params: {slug: item.slug }, props: { item }
+        params: {slug: item.id }, props: { item }
         
     }));
 }
 
 const { item } = Astro.props;
-const title = item.data.title;
 const propsObj = {
 	title: `Summary of Interview with ${item.data.title}`,
     description: item.data.summaryMetaDescription ?? '',
@@ -33,7 +32,7 @@ const descriptionText = item.data.mediumdescription ?? item.data.description;
     padding-top: 2rem;
 }
 </style>
-<BaseLayout setup={propsObj} title={title}>
+<BaseLayout setup={propsObj}>
     <article>
     
         <header>
@@ -51,7 +50,7 @@ const descriptionText = item.data.mediumdescription ?? item.data.description;
         </div>
 
         <ActionButton 
-            link={`/seo-interviews/${item.slug}/interview/`}
+            link={`/seo-interviews/${item.id}/interview/`}
             extraCss="mb-2"
             ariaLabel={`Full interview with ${item.data.title}`}
             altText="Read the entire interview">interview</ActionButton>
