@@ -1,6 +1,7 @@
 ---
 import Navigation from './Navigation.astro';
-import { getImage } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
+import logoImage from '../images/theme/the-history-of-seo-logo-white.png';
 
 const { src } = await getImage({
 	src: import('../images/theme/history-timeline.jpg'),
@@ -13,7 +14,9 @@ const { src } = await getImage({
 
 <header class="main">
     <div class="container" style={{'--bg-image': `url('${src}')`}}>
-        <a href="/" class="logo"><img src="/assets/theme/the-history-of-seo-logo-white.png" width="200" height="33" alt="The History of SEO" /></a>
+        <a href="/" class="logo">
+            <Image src={logoImage} width={200} height={33} alt="The History of SEO" />
+        </a>
         <Navigation />
     </div>
 </header>

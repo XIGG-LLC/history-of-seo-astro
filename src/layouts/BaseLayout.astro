@@ -2,38 +2,26 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BreadCrumb from '../components/BreadCrumb.astro';
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Robots from '../components/Robots.astro';
 import BaseHead from '../components/BaseHead.astro';
 import '../styles/main.scss';
+import genericGraphic from '../images/theme/generic-graphic.jpg';
+import timelineGraphic from '../images/theme/timeline-graphic-interim.jpg';
+
 const { setup = {
 	showCanonical: true,
 	showOpenGraphTags: true
 } } = Astro.props;
+
 const titlePrefix = (import.meta.env.DEV) ? 'ASTRO: ' : '';
-const title = `${titlePrefix}${setup.title}` ?? 'Welcome!';
+const title = `${titlePrefix}${setup.title}`;
 
 const breadCrumbLinks = setup.breadBrumbPaths ?? null;
 const url = new URL(Astro.request.url);
 const isHomePage = (url.pathname === '/') ? true : false;
 const showCanonicalLink = setup.showCanonical ?? true;
 const showOpenGraphTags = setup.showOpenGraphTags ?? true;
-
-const { src: genericSrc } = await getImage({
-	src: import('../images/theme/generic-graphic.jpg'),
-	alt: '',
-	quality: 50,
-	format: 'webp'
-});
-
-const { src: timelineSrc } = await getImage({
-	src: import('../images/theme/timeline-graphic-interim.jpg'),
-	alt: '',
-	quality: 75,
-	format: 'webp'
-});
-
-
 ---
 <html lang="en">
 
@@ -60,20 +48,25 @@ const { src: timelineSrc } = await getImage({
 				</div>
 				<div class="col-2">
 					<div class="img-wrapper">
-						<img 
-							src={genericSrc}
+						<Image 
+							src={genericGraphic}
 							alt="Image of people mingling at the Google booth at a conference" 
 							width="400" 
-							height="200" />
+							height="200" 
+							quality={50}
+							format="webp"
+							/>
 					</div>
 					<div class="brown">
 						{isHomePage && (
 							<div class="left">
-								<img 
-									src={timelineSrc}
+								<Image 
+									src={timelineGraphic}
 									alt="Industry timeline graphic with company logos and years" 
 									width="190" 
-									height="410" />
+									height="410"
+									quality={75}
+									format="webp" />
 							</div>
 						)}
 						<div class="right"></div>
